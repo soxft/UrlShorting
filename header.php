@@ -4,13 +4,15 @@
     博客:http://blog.xsot.cn
     -->
     <!-- 百度统计 -->
-    <script>
+   <script>
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
   hm.src = "https://hm.baidu.com/hm.js?79305cefb089aca83c7af79e380adeda";
   var s = document.getElementsByTagName("script")[0]; 
-    
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
     <?php 
     include('config.php');
     if(empty($_GET['id'])){
