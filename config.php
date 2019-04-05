@@ -9,7 +9,7 @@ Apache伪静态
 暂无!可以按照Nginx的伪静态自己去转换!
 */
 /*你的网站地址*/
-$url='http://url.xsot.cn/';
+$url='http://u.xsot.cn/';
 
 /*你的数据库地址*/
 $conn=mysqli_connect(
