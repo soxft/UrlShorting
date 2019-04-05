@@ -51,7 +51,6 @@ else{
 $data =array(
     'request'=>'success',
     'shorturl'=>$url1 . $shorturl,
-    'shorturl2'=>$url2 . $shorturl,
     );
   $data_json = json_encode($data);
   header('Content-type:text/json');
@@ -77,7 +76,6 @@ $data =array(
     $data =array(
     'request'=>'success',
     'shorturl'=>$url1 . $shorturl,
-    'shorturl2'=>$url2 . $shorturl,
     );
   $data_json = json_encode($data);
   header('Content-type:text/json');
