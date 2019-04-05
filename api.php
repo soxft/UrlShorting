@@ -50,7 +50,7 @@ else{
   if(!empty($shorturl)){
 $data =array(
     'request'=>'success',
-    'shorturl'=>$url1 . $shorturl,
+    'shorturl'=>$url . $shorturl,
     );
   $data_json = json_encode($data);
   header('Content-type:text/json');
@@ -75,7 +75,7 @@ $data =array(
       $go=mysqli_query($conn,$comd1);
     $data =array(
     'request'=>'success',
-    'shorturl'=>$url1 . $shorturl,
+    'shorturl'=>$url . $shorturl,
     );
   $data_json = json_encode($data);
   header('Content-type:text/json');
