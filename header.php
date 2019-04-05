@@ -33,7 +33,7 @@ var _hmt = _hmt || [];
         <?php 
             echo("<a href=\"./index.php\" class=\"mdui-ripple\">首页</a>");
             echo("<a href=\"http://love.9420.ltd\" class=\"mdui-ripple\">星辰表白墙</a>");
-            echo("<a href=\"http://blog.xsot.cn\" class=\"mdui-ripple\">关于</a>");  
+            echo("<a href=\"https://blog.xsot.cn/archives/pro-URLshorting.html\" class=\"mdui-ripple\">关于</a>");  
        ?> 
 </div>
 <center><h2><?php echo($title1); ?></h2></center>
