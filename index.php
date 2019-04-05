@@ -1,5 +1,9 @@
 <?php
 include('header.php');
+if(strpos($_SERVER['HTTP_USER_AGENT'],'QQ/') !== false){
+echo('<br/><center><h2>为了安全起见,请点击右上角的··· 并选择用浏览器打开!<br/><br/></h2></center>');
+goto pass;
+}
 if(empty($id)){
 }
 else{
