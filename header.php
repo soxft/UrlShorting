@@ -28,13 +28,19 @@ var _hmt = _hmt || [];
     <meta charset="utf-8">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/mdui/0.4.2/css/mdui.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/mdui/0.4.2/js/mdui.min.js"></script>
-<div class="mdui-tab mdui-tab-centered mdui-tab-full-width" mdui-tab>
-        <!--首页-->
-        <?php 
-            echo("<a href=\"./index.php\" class=\"mdui-ripple\">首页</a>");
-            echo("<a href=\"http://love.9420.ltd\" class=\"mdui-ripple\">星辰表白墙</a>");
-            echo("<a href=\"https://blog.xsot.cn/archives/pro-URLshorting.html\" class=\"mdui-ripple\">关于</a>");  
-       ?> 
-</div>
+    <div class="mdui-tab mdui-tab-centered mdui-tab-full-width">
+        <a href="./index.php" class="mdui-ripple">
+        <i class="mdui-icon material-icons">home</i>
+        <label>Home</label>
+        </a>
+        <a href="http://love.9420.ltd" class="mdui-ripple">
+        <i class="mdui-icon material-icons">book</i>
+        <label>Lovewall</label>
+        </a>
+        <a href="https://blog.xsot.cn/archives/pro-URLshorting.html" class="mdui-ripple">
+        <i class="mdui-icon material-icons">info_outline</i>
+        <label>ABOUT</label>
+        </a>
+     </div>
 <center><h2><?php echo($title1); ?></h2></center>
 </head>
