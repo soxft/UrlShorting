@@ -4,11 +4,11 @@
     博客:http://blog.xsot.cn
     -->
     <!-- 百度统计 -->
-  <script>
+<script>
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?605378921c75ee674f85fb9a3a48762e";
+  hm.src = "https://hm.baidu.com/hm.js?b9f01b6fcfceb26da1a1f3705ae8feaf";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
