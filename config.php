@@ -14,9 +14,9 @@ $url='http://xsot.tk/';
 /*你的数据库地址*/
 $conn=mysqli_connect(
 "localhost",     //数据库地址
-"wzsd",          //数据库用户名
-"Wabadmin.9824", //数据库密码
-"wzsd"           //数据库名
+"db_username",          //数据库用户名
+"db_passwd", //数据库密码
+"db_name"           //数据库名
 );
 
 /*短网址后需要的字母或数字个数,推荐4个以上,最长20!(请填写数字)*/
