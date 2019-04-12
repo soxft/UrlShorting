@@ -32,7 +32,7 @@ $domain=$_POST['domain'];
 }else{
 $domain=$_GET['a'];
 }
-$data=file_get_contents($url . 'api.php?a=' . $domain); //不养忘记改成你自己的网址!
+$data=file_get_contents($url . 'api.php?a=' . $domain);
 $arr=$data_new=json_decode($data,true);
 if($arr['code']=='200'){
   echo('<center><h2>网址缩短成功!</h2></center>');
@@ -83,7 +83,6 @@ echo('<center><h2>对不起,最长只能输入200字符,请返回重试!</h2></c
     </tbody>
   </table>
 </div>
-  <h5>TIP:xsot.tk为freenom免费域名,并将于2020年3月到期,到时将会更换域名,请勿商用!如有需求请联系我!</h5>
   ";
 }
 pass: include('footer.php'); ?>
