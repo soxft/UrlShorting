@@ -62,7 +62,7 @@ echo('<center><h2>对不起,最长只能输入200字符,请返回重试!</h2></c
 </center>
 </form>
 <br/>
-<h4 class='font-weight: 300;'>API接口:$url . api.php?a=你要缩短的网址(需要加上http(s)://)</h4>
+<h4 class='font-weight: 300;'>API接口" . $url . "api.php?a=你要缩短的网址(需要加上http(s)://)</h4>
 <div class=\"mdui-table-fluid\">
   <table class=\"mdui-table mdui-table-hoverable\">
     <thead>
