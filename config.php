@@ -14,20 +14,20 @@ $url='http://xsot.tk/';
 /*你的数据库地址*/
 $conn=mysqli_connect(
 "localhost",     //数据库地址
-"username",          //数据库用户名
-"password", //数据库密码
-"dbname"           //数据库名
+"wzsd",          //数据库用户名
+"Wabadmin.9824", //数据库密码
+"wzsd"           //数据库名
 );
 
 /*短网址后需要的字母或数字个数,推荐4个以上,最长20!(请填写数字)*/
-$pass='4';
+$pass='5';
 
 /*网站标题(网页中所显示的)*/
-$title1='xcsoft-网址缩短';
+$title1='星辰网址缩短';
 
 /*网站标题(网页标签所显示的）*/
-$title='xcsoft-网址缩短';
+$title='星辰网址缩短';
 
 /*短网址包含的内容,即短网址后会出现的字符*/
-$strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+$strPol = "wxyz10JKL29RSTqMYGrs7BCDUVWXHINOPQtZaAijklmnopEFuv384bcdefgh56";
 ?>

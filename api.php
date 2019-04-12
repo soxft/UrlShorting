@@ -5,15 +5,10 @@ $domain=$_POST['domain'];
 }else{
 $domain=$_GET['a'];
 }
-@$comd="SELECT * FROM `shorturlsql` WHERE `domain`='$domain'";
-@$count=mysqli_query($conn,$comd);
-@$arr1=mysqli_fetch_assoc($count);
-@$shorturl=$arr1['shorturl'];
 if(empty($domain)){
     //检测是否有输入
   $data =array(
-  'request'=>'error',
-  'mes'=>'no url'
+  'code'=>'1001'
   );
   $data_json = json_encode($data);
   header('Content-type:text/json');
@@ -25,20 +20,12 @@ else{
     if(strpos($domain,'http://') !== false){ 
     }elseif(strpos($domain,'https://') !== false){ 
         }else{
-          $data =array(
-  'request'=>'error',
-  'mes'=>'no http(s)'
-  );
-  $data_json = json_encode($data);
-  header('Content-type:text/json');
-  echo $data_json;
-  exit;
+        $domain='http://' . $domain;
         }
     }
     if(strlen($domain) > 200){
       $data =array(
-  'request'=>'error',
-  'mes'=>'url too long'
+  'request'=>'1002',
   );
   $data_json = json_encode($data);
   header('Content-type:text/json');
@@ -47,9 +34,13 @@ else{
     }
     else{
  //如果已存在则
+@$comd="SELECT * FROM `shorturlsql` WHERE `domain`='$domain'";
+@$count=mysqli_query($conn,$comd);
+@$arr1=mysqli_fetch_assoc($count);
+@$shorturl=$arr1['shorturl'];
   if(!empty($shorturl)){
 $data =array(
-    'request'=>'success',
+    'code'=>'200',
     'shorturl'=>$url . $shorturl,
     );
   $data_json = json_encode($data);
@@ -74,7 +65,7 @@ $data =array(
       $comd1="insert into shorturlsql values('$domain','$shorturl');";
       $go=mysqli_query($conn,$comd1);
     $data =array(
-    'request'=>'success',
+    'code'=>'200',
     'shorturl'=>$url . $shorturl,
     );
   $data_json = json_encode($data);

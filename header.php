@@ -16,20 +16,21 @@ var _hmt = _hmt || [];
     <?php 
     include('config.php');
     if(empty($_GET['id'])){
-    $id=$_POST['id'];
+    @$id=$_POST['id'];
     }
     else{
-    $id=$_GET['id'];   
+    @$id=$_GET['id'];   
     }
     ?>
-      <body background="./assets/img/background.jpg">
+    <link rel="icon" type="http://u.xsot.cn/img/x-icon" href="./assets/img/favicon.ico"/>
+      <body background="http://u.xsot.cn/assets/img/background.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title><?php echo($title); ?></title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/mdui/0.4.2/css/mdui.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/mdui/0.4.2/js/mdui.min.js"></script>
     <div class="mdui-tab mdui-tab-centered mdui-tab-full-width">
-        <a href="./index.php" class="mdui-ripple">
+        <a href="./" class="mdui-ripple">
         <i class="mdui-icon material-icons">home</i>
         <label>Home</label>
         </a>
