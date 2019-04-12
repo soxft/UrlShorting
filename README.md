@@ -7,7 +7,7 @@
 3.上传mysql数据,并修改根目录下config.php中数据库等信息<br/>
 4.修改网站伪静态配置:<br/>
 Nginx:  
-<br/>if (!-e $request_filename) {
+if (!-e $request_filename) {
 <br/>        rewrite ^(.*)/([0-9a-zA-Z]*)$ $1/index.php?id=$2 last;
 <br/>}
 <br/>APache,IIS请尝试自己转换.
