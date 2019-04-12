@@ -22,8 +22,8 @@ var _hmt = _hmt || [];
     @$id=$_GET['id'];   
     }
     ?>
-    <link rel="icon" type="http://u.xsot.cn/img/x-icon" href="./assets/img/favicon.ico"/>
-      <body background="http://u.xsot.cn/assets/img/background.jpg">
+    <link rel="icon" type="x-icon" href="./assets/img/favicon.ico"/>
+      <body background="./assets/img/background.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title><?php echo($title); ?></title>
     <meta charset="utf-8">
