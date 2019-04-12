@@ -32,7 +32,7 @@ $domain=$_POST['domain'];
 }else{
 $domain=$_GET['a'];
 }
-$data=file_get_contents('http://xsot.tk/api.php?a=' . $domain); //不养忘记改成你自己的网址!
+$data=file_get_contents($url . 'api.php?a=' . $domain); //不养忘记改成你自己的网址!
 $arr=$data_new=json_decode($data,true);
 if($arr['code']=='200'){
   echo('<center><h2>网址缩短成功!</h2></center>');
