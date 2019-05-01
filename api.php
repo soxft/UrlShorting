@@ -1,8 +1,12 @@
 <?php
 include('./app/record.php');
 include('./app/time.php');
-include('./app/ip.php');
 include('./config.php');
+if(empty($_GET['ip'])){
+include('./app/ip.php');
+}else{
+    $ip=$_GET['ip'];
+}
 $domain=$_GET['d'];
 $passmessage=$_GET['m'];
 if(empty($domain)&&empty($passmessage)){

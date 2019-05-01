@@ -3,10 +3,6 @@ include('header.php');
 include('./app/record.php');
 include('./app/delete.php');
 del("./qrcode/");
-if(strpos($_SERVER['HTTP_USER_AGENT'],'QQ/') !== false or strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false){
-echo('<br/><center><h2>为了安全起见,请点击右上角的 ··· 并选择用浏览器打开!<br/><br/></h2></center>'); //判断打开浏览器UA是否为微信或者QQ
-goto pass;
-}
 if(empty($id)){//如果没有id就跳过判断
 }
 else{          //如果有id则搜索数据库
@@ -15,23 +11,32 @@ else{          //如果有id则搜索数据库
 @$arr1=mysqli_fetch_assoc($count);
 @$type=$arr1['type'];
 @$information=$arr1['information'];
-@$time=$arr1['time'];
+@$timemessage=$arr1['time'];
     if(empty($type)){
     echo("<center><img src=\"https://3gimg.qq.com/tele_safe/safeurl/img/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
     echo('<center><h2>你访问的页面不存在!</h2></center>');
     }
     else{
 if($type=='shorturl'){          //如果数据库type读取为短域
+if(strpos($_SERVER['HTTP_USER_AGENT'],'QQ/') !== false or strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false){
+echo('<br/><center><h2>为了安全起见,请点击右上角的 ··· 并选择用浏览器打开!<br/><br/></h2></center>'); //判断打开浏览器UA是否为微信或者QQ
+goto pass;
+}else{
+    if($access=='on'){
 access($id,$information,'shorturl');
+}
     echo('<center><h2>跳转中->' . $information . '</h2></center>');
     echo('<center><h4>TIP:实际速度取决于你的实际网速和网站服务器速度!</h4></center>');
     header("Refresh:0;url=\"$information\""); 
     }
+}
 if($type=='passmessage'){        //如果数据库type读取为密语
+if($access=='on'){
 access($id,$information,'passmessage');
+}
 echo "<div class=\"mdui-card\">
       <div class=\"mdui-card-primary\">
-        <div class=\"mdui-card-primary-subtitle\">$time</div>
+        <div class=\"mdui-card-primary-subtitle\">$timemessage</div>
         <div class=\"mdui-card-primary-title\">「" . $information . "」</div>
       </div>
   </div>
@@ -40,7 +45,7 @@ echo "<div class=\"mdui-card\">
 <h4>Q:这是什么?</h4>
 <h5>A:这是别人发给你的一条密语!</h5><br/>
 <h4>Q:我也想写密语怎么办?</h4>
-<h5>A:访问<a href=\"xsot.tk\">xsot.tk</a>平台你可以免费进行密语缩短</h5>
+<h5>A:访问<a href=\"https://xsot.tk\">xsot.tk</a>平台你可以免费进行密语缩短</h5>
 ";
       }
 }
@@ -58,7 +63,7 @@ $information=$_POST['information'];       //获取一大堆post
 $choice=$_POST['choice'];
                                         //如果用户选择了短域
 if($choice=='shorturl'){
-$data=file_get_contents($url . 'api.php?d=' . $information); //不养忘记改成你自己的网址!
+$data=file_get_contents($url . 'api.php?d=' . $information . "&&ip=" . $ip); //不养忘记改成你自己的网址!
 $arr=$data_new=json_decode($data,true);
 if($arr['code']=='200'){
   echo('<center><h2>网址缩短成功!</h2></center>');
@@ -77,7 +82,7 @@ echo('<center><h2>对不起,最长只能输入200字符,请返回重试!</h2></c
 }
                                         //如果用户选择了密语
 if($choice=='passmessage'){
-$data=file_get_contents($url . 'api.php?m=' . $information); //不养忘记改成你自己的网址!
+$data=file_get_contents($url . 'api.php?m=' . $information . "&&ip=" . $ip); //不养忘记改成你自己的网址!
 $arr=$data_new=json_decode($data,true);
 if($arr['code']=='200'){
   echo('<center><h2>密语上传成功!</h2></center>');
