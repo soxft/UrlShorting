@@ -31,4 +31,7 @@ $pass='4';
 
 /*短网址包含的内容,即短网址后会出现的字符*/
 $strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+/*设置access是否打开on->开启/其余字符关闭*/
+$access='on'
 ?>
