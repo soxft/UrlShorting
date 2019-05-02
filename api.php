@@ -9,6 +9,8 @@ include('./app/ip.php');
 }
 $domain=$_GET['d'];
 $passmessage=$_GET['m'];
+$domain=str_replace("||","&",$domain);
+$passmessage=str_replace("||","&",$passmessage);
 if(empty($domain)&&empty($passmessage)){
     //检测是否有输入
   $data =array(
