@@ -60,6 +60,7 @@ xcsoft版权所有!
 if(isset($_POST['submit'])){  
 $password=$_POST['password'];
 $information=$_POST['information'];       //获取一大堆post
+$information = str_replace("&","||",$information);
 $choice=$_POST['choice'];
                                         //如果用户选择了短域
 if($choice=='shorturl'){
