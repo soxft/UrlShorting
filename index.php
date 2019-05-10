@@ -6,7 +6,7 @@ del("./qrcode/");
 if(empty($id)){//如果没有id就跳过判断
 }
 else{          //如果有id则搜索数据库
-@$comd="SELECT * FROM `information` WHERE shorturl='$id'";
+@$comd="SELECT * FROM `information` WHERE binary shorturl='$id'";
 @$count=mysqli_query($conn,$comd);
 @$arr1=mysqli_fetch_assoc($count);
 @$type=$arr1['type'];
