@@ -1,8 +1,9 @@
-<head>
     <!--
-    xcsoft版权所有！
-    博客:http://blog.xsot.cn
-    -->
+版权归属:XCSOFT
+修改时间:2019/06/28
+邮箱:contact#xcsoft.top(用@替换#)
+如有任何问题欢迎联系!
+-->
     <script>
 var _hmt = _hmt || [];
 (function() {
@@ -13,7 +14,7 @@ var _hmt = _hmt || [];
 })();
 </script>
     <?php 
-    include('config.php');
+    require_once('config.php');
     if(empty($_GET['id'])){
     $id=$_POST['id'];
     }
@@ -22,7 +23,7 @@ var _hmt = _hmt || [];
     }
     ?>
       <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico"/>
-      <body background="./assets/img/background.jpg">
+      <body background="./assets/img/background.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title><?php echo($title); ?></title>
     <meta charset="utf-8">
@@ -43,4 +44,3 @@ var _hmt = _hmt || [];
         </a>
      </div>
 <center><h2><?php echo("<h2>" . $title1 . "</h2>"); ?></h2></center>
-</head>
