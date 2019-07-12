@@ -1,7 +1,17 @@
 <?php
-include('header.php');
-include('./app/record.php');
-include('./app/delete.php');
+require_once('header.php');
+require_once('./app/record.php');
+require_once('./app/delete.php');
+require_once('./app/detection.php');
+$check1 = "SELECT *FROM `ban` where `content`='$ip' or `content`='$id';";
+$count1 = mysqli_query($conn,$check1);
+$arr1 = mysqli_fetch_assoc($count1);
+$type = $arr1['type'];
+if(!empty($type)){
+        echo("<center><img src=\"https://3gimg.qq.com/tele_safe/safeurl/img/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
+    echo('<center><h1>对不起,您输入的域名或您的IP已被封禁,请联系网站管理员进行处理!</h1></center>');
+    exit;
+}   //检索用户ip是否被封禁
 del("./qrcode/");
 if(empty($id)){//如果没有id就跳过判断
 }
@@ -80,6 +90,11 @@ if($arr['code']=='1002'){
 echo('<center><h2>对不起,最长只能输入200字符,请返回重试!</h2></center>');
     header("Refresh:2;url=\"./index.php\"");
 }
+if($arr['code']=='1003'){
+        echo("<center><img src=\"https://3gimg.qq.com/tele_safe/safeurl/img/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
+    echo('<center><h1>对不起,您输入的域名或您的IP已被封禁,请联系网站管理员进行处理!</h1></center>');
+    header("Refresh:2;url=\"./index.php\"");
+}
 }
                                         //如果用户选择了密语
 if($choice=='passmessage'){
@@ -99,13 +114,18 @@ if($arr['code']=='1002'){
 echo('<center><h2>对不起,最长只能输入200字符,请返回重试!</h2></center>');
     header("Refresh:2;url=\"./index.php\"");
 }
+if($arr['code']=='1003'){
+        echo("<center><img src=\"https://3gimg.qq.com/tele_safe/safeurl/img/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
+    echo('<center><h1>对不起,您输入的域名或您的IP已被封禁,请联系网站管理员进行处理!</h1></center>');
+    header("Refresh:2;url=\"./index.php\"");
+}
 }
 }else{
     echo"
 <form action=\"\" method=\"post\" enctype=\"multipart/form-data\">
 <div class=\"mdui-textfield mdui-textfield-floating-label\">
   <label class=\"mdui-textfield-label\">请输入你想要缩短的网址或密语</label>
-  <input name=\"information\" type=\"text\"class=\"mdui-textfield-input\">
+  <input name=\"information\" type=\"text\" class=\"mdui-textfield-input\">
   <div class=\"mdui-textfield-helper\">请输入长网址或密语,最长可输入200字符</div>
 </div>
 &nbsp;&nbsp;
@@ -136,7 +156,7 @@ echo('<center><h2>对不起,最长只能输入200字符,请返回重试!</h2></c
     <tbody>
       <tr>
         <td>code</td>
-        <td>状态码:200->成功 | 1001->没有输入网址或密语 | 1002->输入网址或密语超出最大范围(小于200字符)</td>
+        <td>状态码:200->成功 | 1001->没有输入网址或密语 | 1002->输入网址或密语超出最大范围 | 1003->访问者的IP或该短域已被封禁</td>
       </tr>
       <tr>
         <td>shorturl</td>
