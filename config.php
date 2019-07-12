@@ -34,4 +34,7 @@ $strPol = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 /*设置access是否打开on->开启/其余字符关闭*/
 $access='on'
+   
+/*设置后台管理密码*/
+$passwd='admin';
 ?>
