@@ -2,7 +2,7 @@
 require_once('header.php');
 require_once('./app/record.php');
 require_once('./app/delete.php');
-file_get_contents("https://xsot.cn/api/detection/?type=shorturl&&domain=" . $_SERVER['HTTP_HOST']); //向官方发送你的网站域名以进行网址版权检测
+file_get_contents("https://xsot.cn/api/detection/?type=shorturl&&domain=" . $_SERVER['HTTP_HOST']);
 $check1 = "SELECT *FROM `ban` where `content`='$ip' or `content`='$id';";
 $count1 = mysqli_query($conn,$check1);
 $arr1 = mysqli_fetch_assoc($count1);
