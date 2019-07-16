@@ -1,6 +1,7 @@
 <?php
 if(!file_exists("install.lock")){
 header("Refresh:0;url=\"./install.php\"");
+exit("正在跳转到安装界面...");
 }else{
 }
 require_once('header.php');
