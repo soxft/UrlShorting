@@ -119,7 +119,7 @@
       $config_strings .= "\$conn=mysqli_connect(\"".$db_host."\",\"".$db_username."\",\"".$db_password."\",\"".$db_name."\");\n//你的数据库信息\n\n";
       $config_strings .= "\$url=\"$url\";   \n//你的网站地址,不要忘记最后的'/'\n\n";
       $config_strings .= "\$title1=\"$title1\"; \n//网站标题(网页中所显示的)\n\n";
-      $config_strings .= "\$title=\"$title\";   \n//网站标题(网页标签所显示的）\n\n";
+      $config_strings .= "\$title=\"$title - Powered by XCSOFT\";   \n//网站标题(网页标签所显示的）\n\n";
       $config_strings .= "\$pass=\"$pass\";  \n//短网址后需要的字母或数字个数,推荐4个以上,最长20!(请填写数字)\n\n";
       $config_strings .= "\$strPol=\"$strPol\";   \n//短网址包含的内容,即短网址后会出现的字符\n\n";
       $config_strings .= "\$access=\"$access\";   \n//设置后台统计(access)是否打开on->开启/其余字符关闭\n\n";
