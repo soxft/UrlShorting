@@ -10,6 +10,7 @@ Nginx:
 if (!-e $request_filename) {
 <br/>rewrite ^/(.*)$ /index.php?id=$1 last;
 <br/>}
+
 <br/>Apache:
 <IfModule mod_rewrite.c>
 <br/>RewriteEngine On
@@ -17,7 +18,8 @@ if (!-e $request_filename) {
 <br/>RewriteCond %{REQUEST_FILENAME} !-d
 <br/>RewriteRule ^(.*)$ /index.php?id=$1 [L]
 <br/></IfModule>
-<br/>IIS请尝试自己转换.
+
+IIS请尝试自己转换.
 <br/>5.访问网站进行确认.
 ## 版权
 xcsoft版权所有
