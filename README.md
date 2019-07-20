@@ -11,7 +11,7 @@ if (!-e $request_filename) {
 <br/>rewrite ^/(.*)$ /index.php?id=$1 last;
 <br/>}
 <br/>Apache:
-<br/><IfModule mod_rewrite.c>
+<IfModule mod_rewrite.c>
 <br/>RewriteEngine On
 <br/>RewriteCond %{REQUEST_FILENAME} !-f
 <br/>RewriteCond %{REQUEST_FILENAME} !-d
