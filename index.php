@@ -147,8 +147,27 @@ if($arr['code']=='1003'){
 </center>
 </form>
 <br/>
-<p class='font-weight: 300;'>API短域接口:" . $url . "api.php?d=你要缩短的网址</p>
-<p class='font-weight: 300;'>API密语接口:" . $url . "api.php?m=你的密语</p>
+<div class=\"mdui-table-fluid\">
+  <table class=\"mdui-table mdui-table-hoverable\">
+    <thead>
+      <tr>
+        <th>说明</th>
+        <th>Api接口</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>短域</td>
+        <td>" . $url . "api.php?d=所需缩短的网址</td>
+      </tr>
+      <tr>
+        <td>密语</td>
+        <td>" . $url . "api.php?m=你所需的密语</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br>
 <div class=\"mdui-table-fluid\">
   <table class=\"mdui-table mdui-table-hoverable\">
     <thead>
@@ -160,7 +179,7 @@ if($arr['code']=='1003'){
     <tbody>
       <tr>
         <td>code</td>
-        <td>状态码:200->成功 | 1001->没有输入网址或密语 | 1002->输入网址或密语超出最大范围 | 1003->访问者的IP或该短域已被封禁</td>
+        <td>状态码:200->成功 | 1001->未输入网址或密语 | 1002->输入网址或密语超出最大范围 | 1003->访问者的IP或该短域已被封禁</td>
       </tr>
       <tr>
         <td>shorturl</td>
@@ -169,7 +188,7 @@ if($arr['code']=='1003'){
     </tbody>
   </table>
 </div>
-<h5>TIP:xsot.tk为freenom免费域名,并将于2020年3月到期,到时将会更换域名,请勿商用!如有需求请联系我!</h5>";
+<br>";
 }
 ?>
 <?php

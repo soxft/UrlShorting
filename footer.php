@@ -1,5 +1,19 @@
-<footer>
-    <div class="mdui-divider-inset"></div>
-        <!-- 至所有用户:这个开源放在这里分享是为了让更多用户开心,希望你不要移除版权,如果移除版权,你的名字将被挂在我的博客上!在这基础上你可以自由修改源码!如果有任何疑问,可以联系我! -->
-    <center><p> &copy;<?php echo(date("Y")); ?> <a href='http://xsot.cn'>XCSOFT</a> All Rights Reserved.</p><center>
-</footer>
+<!--footer-css-->
+<style type="text/css"> 
+footer{
+padding: 16px 0;
+  background-color: #ffffff;
+  color: #212121;
+}
+</style> 
+      <br />
+  <div class="mdui-shadow-2">
+    <footer>
+    <center>
+        <!-- 本源码基于apache2开源，你可以在不修改版权的基础上任意修改其他内容。同时每一个修改过的文件必须防止版权说明 -->
+     <div class="footer-copyright">Copyright © 2019 <a href="http://xsot.cn">XCSOFT</a> All rights reserved.</div>
+    </center>
+  </footer>
+</div>
+</body>
+</html>

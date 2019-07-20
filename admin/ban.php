@@ -3,17 +3,27 @@
   <title>BAN</title>
   <?php
   require_once("./header.php");
-  echo "已被ban列表:<br /><br /><center><div class=\"mdui-table-fluid\">
+  $comd = "SELECT * FROM `ban` order by time DESC";
+  $sql = mysqli_query($conn,$comd);
+  $arr=mysqli_fetch_assoc($sql);
+  $content=$arr['content'];
+  if (empty($content))
+  {
+    echo("<center><h2>暂时没有更多信息</h2></center>");
+    require_once("../footer.php");
+    exit();
+  }else{
+    echo "已被ban列表:<br /><br /><center><div class=\"mdui-table-fluid\">
                         <table class=\"mdui-table mdui-table-hoverable\">
                             <tr>
                                 <th>种类</th>
                                 <th>IP或短域</th>
                                 <th>状态</th>
                             </tr>";
+  }
   $comd = "SELECT * FROM `ban` order by time DESC";
   $sql = mysqli_query($conn,$comd);
   while ($row = mysqli_fetch_object($sql)) {
-    if (!empty($row->content)) {
       echo("
       <tr>
         <td>$row->type</td>
@@ -23,13 +33,10 @@
               </td>
 
       </tr>");
-    } else {
-      echo("<center><h2>暂时没有更多信息</h2></center>");
-    }
   }
   echo("</table></div>");
   ?>
 </body>
-<?php require_once("../footer.php");
+<?php 
+require_once("../footer.php");
 ?>
-<?php

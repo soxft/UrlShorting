@@ -3,7 +3,17 @@
     <title>短域管理</title>
     <?php
     require_once("./header.php");
-    echo "<h4>TIP:因字符原因,表格显示不全,手机用户可以向左滑动看到更多信息,电脑用户翻阅到表格最下端拖动控制条.</h4>";
+    $comd = "SELECT * FROM information order by time DESC";
+    $sql = mysqli_query($conn,$comd);
+    $arr=mysqli_fetch_assoc($sql);
+    $shorturl=$arr['shorturl'];
+     if (empty($shorturl))
+  {
+    echo("<center><h2>暂时没有更多信息</h2></center>");
+    require_once("../footer.php");
+    exit();
+  }else{
+        echo "<h4>TIP:因字符原因,表格显示不全,手机用户可以向左滑动看到更多信息,电脑用户翻阅到表格最下端拖动控制条.</h4>";
     echo "<br /><center><div class=\"mdui-table-fluid\">
                         <table class=\"mdui-table mdui-table-hoverable\">
                             <tr>
@@ -16,7 +26,8 @@
                                 <th>IP状态</th>
                                 <th>管理</th>
                             </tr>";
-    $comd = "SELECT * FROM information order by time DESC";
+  }
+  $comd = "SELECT * FROM information order by time DESC";
     $sql = mysqli_query($conn,$comd);
     while ($row = mysqli_fetch_object($sql)) {
         $comd1 = "SELECT * FROM `ban` WHERE content='$row->shorturl'";
@@ -37,7 +48,6 @@
         } else {
             $check2 = "BAN";
         }    //判断是否已经被ban
-        if (!empty($row->shorturl)) {
             echo("
       <tr>
         <td>$row->shorturl</td>
@@ -54,9 +64,6 @@
               </td>
 
       </tr>");
-        } else {
-            echo("<center><h2>暂时没有更多信息</h2></center>");
-        }
     }
     echo("</table></div>");
     ?>

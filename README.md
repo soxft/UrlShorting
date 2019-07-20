@@ -10,11 +10,22 @@ Nginx:
 if (!-e $request_filename) {
 <br/>rewrite ^/(.*)$ /index.php?id=$1 last;
 <br/>}
-<br/>APache,IIS请尝试自己转换.
+<br/>Apache:
+<br/><IfModule mod_rewrite.c>
+<br/>RewriteEngine On
+<br/>RewriteCond %{REQUEST_FILENAME} !-f
+<br/>RewriteCond %{REQUEST_FILENAME} !-d
+<br/>RewriteRule ^(.*)$ /index.php?id=$1 [L]
+<br/></IfModule>
+<br/>IIS请尝试自己转换.
 <br/>5.访问网站进行确认.
 ## 版权
 xcsoft版权所有
 ## 更新
+v1.6更新:
+<br/>1.感谢@Hiram·Wong使用MDUI对短域界面做了进一步美化.
+<br/>2.新建notice数据表,支持首页显示公告信息.
+
 v1.5更新：
 <br/>1.新增install.php安装引导程序,自动上传mysql数据,开启自动安装新时代....
 <br/>2.在qrcode文件夹中防止无用文件,防止Github吞文件夹(该无用文件会在第一次使用时自动删除)

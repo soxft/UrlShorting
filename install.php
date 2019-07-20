@@ -1,5 +1,5 @@
 <title>星辰安装系统</title>
-<body background="//xsot.tk/assets/img/background.png">
+<body background="./assets/img/background.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/mdui/0.4.2/css/mdui.min.css">
@@ -41,6 +41,10 @@
         <input name="url" type="text" class="mdui-textfield-input" value="http://<?php echo$_SERVER['HTTP_HOST'] ?>/" />
       </div>
       <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">默认公告</label>
+        <input name="notices" type="text" class="mdui-textfield-input" value="欢迎使用星辰短域|密语!" />
+      </div>
+      <div class="mdui-textfield mdui-textfield-floating-label">
         <label class="mdui-textfield-label">网站标题(网页中所显示的)</label>
         <input name="title1" type="text" class="mdui-textfield-input" value="星辰短域|密语" />
       </div>
@@ -71,21 +75,32 @@
       </form>
       <?php
     } else {
-      if (!empty($_POST['db_host']) || !empty($_POST['db_username']) || !empty($_POST['db_name']) || !empty($_POST['db_password']) || !empty($_POST['url']) || !empty($_POST['title']) || !empty($_POST['title1']) || !empty($_POST['pass']) || !empty($_POST['strPol']) || !empty($_POST['access']) || !empty($_POST['passwd'])
-      ) {
-        $db_host = $_POST['db_host'];
+      if (empty($_POST['db_host']) 
+      || empty($_POST['db_username']) 
+      || empty($_POST['db_name']) 
+      || empty($_POST['db_password']) 
+      || empty($_POST['url']) 
+      || empty($_POST['title']) 
+      || empty($_POST['title1']) 
+      || empty($_POST['pass']) 
+      || empty($_POST['strPol']) 
+      || empty($_POST['access']) 
+      || empty($_POST['passwd']) 
+      || empty($_POST['notices'])){
+         exit("<br/><center><h1>请检查您是否填写完全部内容后重试!</h1></center>");
+      } else {
+       $db_host = $_POST['db_host'];
         $db_username = $_POST['db_username'];
         $db_password = $_POST['db_password'];
         $db_name = $_POST['db_name'];
         $url = $_POST['url'];
+        $notices = $_POST['notices'];
         $title = $_POST['title'];
         $title1 = $_POST['title1'];
         $pass = $_POST['pass'];
         $strPol = $_POST['strPol'];
         $access = $_POST['access'];
         $passwd = $_POST['passwd'];
-      } else {
-        exit("<br/><center><h1>请检查您是否填写完全部内容后重试!</h1></center>");
       }
       @$conn = mysqli_connect($db_host,$db_username,$db_password,$db_name);
       if ($conn) {
@@ -108,9 +123,16 @@
       time char(20)	NOT NULL,
       ip char(20)	NOT NULL
       )";
+      $notice = "CREATE TABLE notice(
+      updater	mediumtext NOT NULL,
+      notices mediumtext	NOT NULL
+      )";
+      $sql="INSERT INTO `notice` VALUES('adminer','$notices');";
         mysqli_query($conn,$accessx);
         mysqli_query($conn,$banx);
         mysqli_query($conn,$informationx);
+        mysqli_query($conn,$notice);
+        mysqli_query($conn,$sql);
       } else {
         exit("<br/><center><h1>数据库连接失败!请确认数据库信息填写正确!</h1></center>");
       }
@@ -131,9 +153,9 @@
       $fp2 = fopen($lockfile,'w');
       fwrite($fp2,'安装锁文件,请勿删除!');
       fclose($fp2);
-      echo "<h1>安装成功!</h1>";
-      echo "接下来请手动修改网站伪静态配置(网站伪静态配置请查看README.md),3s后将为您自动跳转到首页!";
+        echo "<br/><center><h1>安装成功!4s后将为您自动跳转到首页!</h1></center>";
+        echo "<br/><center><h2>非宝塔一键部署用户请注意,你还需要自己手动配置网站伪静态.网站伪静态配置信息请参考根目录下`README.md`中所写内容.</h2></center>";
       file_get_contents("https://xsot.cn/api/detection/?type=shorturl&&domain=" . $_SERVER['HTTP_HOST']);
-      header("Refresh:3;url=\"./index.php\"");
+      header("Refresh:4;url=\"./index.php\"");
     }
     ?>

@@ -30,6 +30,7 @@ $password = $_SESSION['password'];
         echo("<a href=\"./index.php\" class=\"mdui-ripple\">管理首页</a>");
         echo("<a href=\"./ban.php\" class=\"mdui-ripple\">BAN</a>");
         echo("<a href=\"./control.php\" class=\"mdui-ripple\">短域管理</a>");
+        echo("<a href=\"./notice.php\" class=\"mdui-ripple\">公告修改</a>");
         echo("<a href=\"./logout.php\" class=\"mdui-ripple\">退出登录</a>");
         echo("<a href=\"../index.php\" class=\"mdui-ripple\">返回前台</a>");
         ?>
