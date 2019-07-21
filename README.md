@@ -22,7 +22,7 @@ if (!-e $request_filename) {
 IIS请尝试自己转换.
 <br/>5.访问网站进行确认.
 ## 版权
-xcsoft版权所有
+xcsoft版权所有 改源码依据apache2开源协议开源,请不要修改版权信息！
 ## 更新
 v1.6更新:
 <br/>1.感谢@Hiram·Wong使用MDUI对短域界面做了进一步美化.
