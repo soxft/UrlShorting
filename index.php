@@ -45,7 +45,11 @@ if (empty($id)) {
         if ($access == 'on') {
           access($id,$information,'shorturl');
         }
+        if(preg_match('/[\x{4e00}-\x{9fa5}]/u',$information) > 0){
         $informations=parseurl($information);
+        }else{
+            $informations = $information;
+        }
         echo("<br / ><div class=\"mdui-card\"><center><h2>跳转中->" . $information . "</h2></center>");
         echo("<center><h4>TIP:实际速度取决于你的实际网速和网站服务器速度!</h4></center></div><br />");
         header("Refresh:0;url=\"$informations\"");
