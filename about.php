@@ -6,6 +6,7 @@ exit("正在跳转到安装界面...");
 }
 require_once('header.php');
 echo <<<EOF
+<br />
 <div class="mdui">
     <!--<div class="mdui-col-sm-6 mdui-col-md-4">-->
       <div class="mdui-card">
@@ -18,7 +19,7 @@ echo <<<EOF
           <img src="http://soxft.cn/assets/img/team.png"/>
         </div>
   <div class="mdui-card-content">
-版本：v1.6.2<br/>
+版本：$version<br/>
 <br/>
 作者：XCSOFT(XSOT.CN)<br/>
 <br/>

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <!--
 版权归属:XCSOFT
 修改时间:2019/06/28
@@ -13,7 +14,6 @@ else{
 $id=$_GET['id'];   
 }
 ?>
-<!DOCTYPE html>
 <html>
 <head>
  <meta charset="utf-8">
@@ -65,6 +65,8 @@ $id=$_GET['id'];
      </div>
       </div>
     </div>
+    <br />
+    <div class="mdui-card">
 <div class="tip">
 <ul class="mdui-list">
   <li class="mdui-list-item">
@@ -85,6 +87,7 @@ $id=$_GET['id'];
   <li class="mdui-list-item">
     <div class="mdui-list-item-avatar"><img src="./assets/img/logo.png"/></div>
     <div class="mdui-list-item-content"><?php echo $notice ?>
+    </div>
     </div>
 <?php
 }
