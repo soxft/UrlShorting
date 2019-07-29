@@ -48,7 +48,7 @@
         } else {
             $check2 = "BAN";
         }    //判断是否已经被ban
-            echo("
+            echo "
       <tr>
         <td>$row->shorturl</td>
         <td>$row->information</td>
@@ -57,10 +57,19 @@
         <td>$row->time</td>
         <td>$check</td>
         <td>$check2</td>
-              <td>
-              <a href=\"./processing.php?shorturl=$row->shorturl&&type=del\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">删除</a>
-              <a href=\"./processing.php?shorturl=$row->shorturl&&type=domain\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">封短域</a>
-              <a href=\"./processing.php?ip=$row->ip&&type=ip\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">封ip</a>
+        <td>
+          <a href=\"./processing.php?shorturl=$row->shorturl&&type=del\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">删除</a>";
+if($check=="正常"){
+  echo "<a href=\"./processing.php?shorturl=$row->shorturl&&type=domain\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">封短域</a>";
+}else{
+  echo "<a href=\"./processing.php?content=$row->shorturl&&type=cancel&&from=control\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">解短域</a>";
+}
+if($check2=="正常"){
+  echo "<a href=\"./processing.php?ip=$row->ip&&type=ip\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">封ip</a>";
+}else{
+  echo "<a href=\"./processing.php?content=$row->ip&&type=cancel&&from=control\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">解IP</a>";
+}              
+     echo("             
               </td>
 
       </tr>");

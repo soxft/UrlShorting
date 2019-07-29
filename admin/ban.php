@@ -29,7 +29,7 @@
         <td>$row->type</td>
         <td>$row->content</td>
               <td>
-              <a href=\"./processing.php?content=$row->content&&type=cancel\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">解除</a>
+              <a href=\"./processing.php?content=$row->content&&type=cancel&&from=ban\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">解除</a>
               </td>
 
       </tr>");

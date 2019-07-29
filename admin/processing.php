@@ -5,6 +5,7 @@ $type = $_GET['type'];
 $shorturl = $_GET['shorturl'];
 $ip = $_GET['ip'];
 $content = $_GET['content'];
+$from=$_GET['from'];
 if ($type == "del") {
     $comd1 = "delete from `information` WHERE shorturl='$shorturl'";
     //确认账号所有者是否为admin
@@ -41,7 +42,11 @@ if ($type == "del") {
     $comd1 = "delete from `ban` where `content`='$content';";
     $go = mysqli_query($conn,$comd1);
     echo("<center><h2>解BAN成功!</h2></center>");
+    if($from == "ban"){
     header("Refresh:1;url=\"./ban.php\"");
+    }elseif($from == "control"){
+       header("Refresh:1;url=\"./control.php\"");
+    }
 } else {
     echo "<h1><center>ERROR!</center></h1>";
 }
