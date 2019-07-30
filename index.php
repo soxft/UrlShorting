@@ -60,10 +60,13 @@ if (empty($id)) {
       if ($access == 'on') {
         access($id,$information,'passmessage');
       }
-      echo "<div class=\"mdui-card\">
+      echo "
+      <br />
+      <div class=\"mdui-card\">
       <div class=\"mdui-card-primary\">
         <div class=\"mdui-card-primary-subtitle\">$timemessage</div>
-        <div class=\"mdui-card-primary-title\">「" . $information . "」</div>
+        <center><div class=\"mdui-card-primary-title\">「" . $information . "」</div></center>
+        <br />
       </div>
   </div>
 </div>
@@ -111,7 +114,7 @@ if (isset($_POST['submit'])) {
   }
   //如果用户选择了密语
   if ($choice == 'passmessage') {
-    $arr = Urlshorting($content,"shorturl");
+    $arr = Urlshorting($content,"passmessage");
     echo "<br / ><div class=\"mdui-card\">";
     if ($arr[0] == 200) {
       echo('<center><h2>密语上传成功!</h2></center>');
