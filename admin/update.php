@@ -138,6 +138,19 @@ if ($urlinfo == "200") {
                             </div>
                         </div>
                     </li>
+                    <div class="mdui-divider"></div>
+                <li class="mdui-list-item mdui-ripple">
+                    <div class="mdui-list-item-content">
+                        <div class="mdui-list-item-title">
+                            <div style="font-size: 20px;font-weight:400;" class="mdui-col-xs-5">
+                                当前更新:
+                            </div>
+                            <div style="font-size: 18px;font-weight:400;" class="mdui-col-xs-7">
+                                <?php echo $info ?>
+                            </div>
+                        </div>
+                    </div>
+                </li>
                 </ul>
             </div>
             <?php
