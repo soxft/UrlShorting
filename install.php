@@ -146,7 +146,7 @@
       $config_strings .= "\$strPol=\"$strPol\";   \n//短网址包含的内容,即短网址后会出现的字符\n\n";
       $config_strings .= "\$access=\"$access\";   \n//设置后台统计(access)是否打开on->开启/其余字符关闭\n\n";
       $config_strings .= "\$passwd=\"$passwd\";   \n//设置后台管理密码 \n\n";
-      $config_strings .= "\$version=\"1.6.3\";      \n//当前版本号--请不要修改\n\n";
+      $config_strings .= "\$version=\"1.6.4\";      \n//当前版本号--请不要修改\n\n";
       $config_strings.= "?>";
       $fp = fopen($config_file,"wb");
       fwrite($fp,$config_strings);
