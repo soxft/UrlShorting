@@ -3,17 +3,28 @@
     <title>短域管理</title>
     <?php
     require_once("./header.php");
-    $comd = "SELECT * FROM information order by time DESC";
-    $sql = mysqli_query($conn,$comd);
-    $arr=mysqli_fetch_assoc($sql);
-    $shorturl=$arr['shorturl'];
-     if (empty($shorturl))
-  {
-    echo("<center><h2>暂时没有更多信息</h2></center>");
-    require_once("../footer.php");
-    exit();
+    $p = $_GET['p'];
+    if(empty($p) || $p < "1")
+    {
+      $p = "1";  //如果没有page那就定义一个默认的page  = 0
+    }
+    $page  = ($p - 1) * $px;
+    //计算出第几条数据
+  $mysql = "select * from `TABLES` where `TABLE_NAME`='information';";
+  $result = mysqli_query($conns,$mysql);
+  $arr = mysqli_fetch_assoc($result);
+  $page_allx =  $arr['TABLE_ROWS'];  //所有数据
+ if($page_allx >= $px)
+ {
+  if($page_allx % $px == 0){
+    $page_all = $page_allx / $px; // 计算总共页数  
   }else{
-        echo "<h4>TIP:因字符原因,表格显示不全,手机用户可以向左滑动看到更多信息,电脑用户翻阅到表格最下端拖动控制条.</h4>";
+    $page_all = ($page_allx - ($page_allx % $px)) / $px;
+  }
+ }else{
+   $page_all = 1;
+ }
+    echo "<h4>TIP:因字符原因,表格显示不全,手机用户可以向左滑动看到更多信息,电脑用户翻阅到表格最下端拖动控制条.</h4>";
     echo "<br /><center><div class=\"mdui-table-fluid\">
                         <table class=\"mdui-table mdui-table-hoverable\">
                             <tr>
@@ -26,8 +37,8 @@
                                 <th>IP状态</th>
                                 <th>管理</th>
                             </tr>";
-  }
-  $comd = "SELECT * FROM information order by time DESC";
+// 表格开头
+  $comd = "SELECT * FROM `information` order by time DESC limit $page,$px";
     $sql = mysqli_query($conn,$comd);
     while ($row = mysqli_fetch_object($sql)) {
         $comd1 = "SELECT * FROM `ban` WHERE content='$row->shorturl'";
@@ -69,12 +80,23 @@ if($check2=="正常"){
 }else{
   echo "<a href=\"./processing.php?content=$row->ip&&type=cancel&&from=control\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">解IP</a>";
 }              
-     echo("             
-              </td>
-
-      </tr>");
+     echo"</td></tr>";
     }
-    echo("</table></div>");
+    echo "</table></div>";
+    
+    $page_next = $p+1;
+    $page_last = $p-1;
+    //计算一下上一页或者下一页的page
+    echo "<br />";
+    if($p != 1){
+      echo  "<a href=\"./control.php?p=$page_last\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">上一页</a>";
+    }
+    echo "&emsp;"; 
+    if($p != $page_all){
+      echo "<a href=\"./control.php?p=$page_next\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">下一页</a>"; 
+    }
+    //按钮跳转
+    echo "<br />";
     ?>
 </body>
 <?php require_once("../footer.php");

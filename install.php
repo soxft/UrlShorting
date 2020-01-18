@@ -9,7 +9,7 @@
   <?php
   $lockfile = "install.lock";
   if (file_exists($lockfile)) {
-    exit("<center><h3>您已经安装过了，如果需要重新安装请先删除根目录下的install.lock(如果你只需要做轻微修改请直接修改根目录下的config.php)</center></h3>");
+    exit("<center><h3>您已经安装过了，如果需要重新安装请先删除根目录下的install.lock(如果你只需要修改内容请访问数据库修改config表<br />如有疑问请加qq群：657529886)</center></h3>");
   }
   if (!isset($_POST['submit'])) {
     ?>
@@ -71,25 +71,15 @@
       <br />
       <center>
         <input class="mdui-btn mdui-btn-raised mdui-ripple" type="submit" name="submit" value="安装" />
-      </center·
+      </center>
       </form>
       <?php
+      $title = $title . " - Powered by XCSOFT";
     } else {
-      if (empty($_POST['db_host']) 
-      || empty($_POST['db_username']) 
-      || empty($_POST['db_name']) 
-      || empty($_POST['db_password']) 
-      || empty($_POST['url']) 
-      || empty($_POST['title']) 
-      || empty($_POST['title1']) 
-      || empty($_POST['pass']) 
-      || empty($_POST['strPol']) 
-      || empty($_POST['access']) 
-      || empty($_POST['passwd']) 
-      || empty($_POST['notices'])){
-         exit("<br/><center><h1>请检查您是否填写完全部内容后重试!</h1></center>");
+      if (empty($_POST['db_host']) || empty($_POST['db_username']) || empty($_POST['db_name']) || empty($_POST['db_password']) || empty($_POST['url']) || empty($_POST['title']) || empty($_POST['title1']) || empty($_POST['pass']) || empty($_POST['strPol']) || empty($_POST['access']) || empty($_POST['passwd']) || empty($_POST['notices'])) {
+        exit("<br/><center><h1>请检查您是否填写完全部内容后重试!</h1></center>");
       } else {
-       $db_host = $_POST['db_host'];
+        $db_host = $_POST['db_host'];
         $db_username = $_POST['db_username'];
         $db_password = $_POST['db_password'];
         $db_name = $_POST['db_name'];
@@ -123,39 +113,77 @@
       time char(20)	NOT NULL,
       ip char(20)	NOT NULL
       )";
-      $notice = "CREATE TABLE notice(
+        $notice = "CREATE TABLE notice(
       updater	mediumtext NOT NULL,
       notices mediumtext	NOT NULL
       )";
-      $sql="INSERT INTO `notice` VALUES('adminer','$notices');";
+        $config = "CREATE TABLE config(
+      type mediumtext NOT NULL,
+      content mediumtext	NOT NULL
+      )";
+        $sql = "INSERT INTO `config` VALUES('url','$url');";
+        $sql1 = "INSERT INTO `config` VALUES('title','$title');";
+        $sql2 = "INSERT INTO `config` VALUES('title1','$title1');";
+        $sql3 = "INSERT INTO `config` VALUES('pass','$pass');";
+        $sql4 = "INSERT INTO `config` VALUES('strPol','$strPol');";
+        $sql5 = "INSERT INTO `config` VALUES('access','$access');";
+        $sql6 = "INSERT INTO `config` VALUES('passwd','$passwd');";
+        $sql7 = "INSERT INTO `config` VALUES('px','25');";
+        $sql8 = "INSERT INTO `config` VALUES('version','1.6.5');";
+        $sql9 = "INSERT INTO `notice` VALUES('adminer','$notices');";
         mysqli_query($conn,$accessx);
         mysqli_query($conn,$banx);
         mysqli_query($conn,$informationx);
         mysqli_query($conn,$notice);
+        mysqli_query($conn,$config);
         mysqli_query($conn,$sql);
+        mysqli_query($conn,$sql1);
+        mysqli_query($conn,$sql2);
+        mysqli_query($conn,$sql3);
+        mysqli_query($conn,$sql4);
+        mysqli_query($conn,$sql5);
+        mysqli_query($conn,$sql6);
+        mysqli_query($conn,$sql7);
+        mysqli_query($conn,$sql8);
+        mysqli_query($conn,$sql9);
       } else {
         exit("<br/><center><h1>数据库连接失败!请确认数据库信息填写正确!</h1></center>");
       }
+      //写数据库
       $config_file = "config.php";
+
       $config_strings = "<?php\n";
-      $config_strings .= "\$conn=mysqli_connect(\"".$db_host."\",\"".$db_username."\",\"".$db_password."\",\"".$db_name."\");\n//你的数据库信息\n\n";
-      $config_strings .= "\$url=\"$url\";         \n//你的网站地址,不要忘记最后的'/'\n\n";
-      $config_strings .= "\$title1=\"$title1\";   \n//网站标题(网页中所显示的)\n\n";
-      $config_strings .= "\$title=\"$title - Powered by XCSOFT\";   \n//网站标题(网页标签所显示的）\n\n";
-      $config_strings .= "\$pass=\"$pass\";       \n//短网址后需要的字母或数字个数,推荐4个以上,最长20!(请填写数字)\n\n";
-      $config_strings .= "\$strPol=\"$strPol\";   \n//短网址包含的内容,即短网址后会出现的字符\n\n";
-      $config_strings .= "\$access=\"$access\";   \n//设置后台统计(access)是否打开on->开启/其余字符关闭\n\n";
-      $config_strings .= "\$passwd=\"$passwd\";   \n//设置后台管理密码 \n\n";
-      $config_strings .= "\$version=\"1.6.4\";      \n//当前版本号--请不要修改\n\n";
+      $config_strings .= "\$conn=mysqli_connect(\"".$db_host."\",\"".$db_username."\",\"".$db_password."\",\"".$db_name."\");\n";
+      $config_strings .= "\$conns=mysqli_connect(\"".$db_host."\",\"".$db_username."\",\"".$db_password."\",\"information_schema\");\n//你的数据库信息\n";
+      $config_strings .= "function content(\$info)\n";
+      $config_strings .= "{\n";
+      $config_strings .= "global \$conn;    //全局变量\n";
+      $config_strings .= "\$comd = \"SELECT * FROM `config` where `type` = '\$info';\";\n";
+      $config_strings .= "\$sql = mysqli_query(\$conn,\$comd);\n";
+      $config_strings .= "\$arr = mysqli_fetch_assoc(\$sql);\n";
+      $config_strings .= "return \$arr['content'];\n";
+      $config_strings .= "}\n";
+      $config_strings .= "\$url=content(\"url\");         \n//你的网站地址,不要忘记最后的'/'\n";
+      $config_strings .= "\$title1=content(\"title1\");   \n//网站标题(网页中所显示的)\n";
+      $config_strings .= "\$title=content(\"title\");   \n//网站标题(网页标签所显示的）\n";
+      $config_strings .= "\$pass=content(\"pass\");       \n//短网址后需要的字母或数字个数,推荐4个以上,最长20!(请填写数字)\n";
+      $config_strings .= "\$strPol=content(\"strPol\");   \n//短网址包含的内容,即短网址后会出现的字符\n";
+      $config_strings .= "\$access=content(\"access\");   \n//设置后台统计(access)是否打开on->开启/其余字符关闭\n";
+      $config_strings .= "\$passwd=content(\"passwd\");   \n//设置后台管理密码\n";
+      $config_strings .= "\$px=content(\"px\");      \n//后台短域管理页面一次显示的短域个数\n";
+      $config_strings .= "\$version=content(\"version\");      \n//当前版本号--请不要修改\n";
       $config_strings.= "?>";
+      //文件内容
       $fp = fopen($config_file,"wb");
       fwrite($fp,$config_strings);
       fclose($fp);
+      //写config.php
       $fp2 = fopen($lockfile,'w');
       fwrite($fp2,'安装锁文件,请勿删除!');
       fclose($fp2);
-        echo "<br/><center><h1>安装成功!4s后将为您自动跳转到首页!</h1></center>";
-        echo "<br/><center><h2>非宝塔一键部署用户请注意,你还需要自己手动配置网站伪静态.网站伪静态配置信息请参考根目录下`README.md`中所写内容.</h2></center>";
+      //写注册锁
+      echo "<br/><center><h1>安装成功!4s后将为您自动跳转到首页!</h1></center>";
+      echo "<br/><center><h2>非宝塔一键部署用户请注意,你还需要自己手动配置网站伪静态.网站伪静态配置信息请参考根目录下`README.md`中所写内容.</h2></center>";
       file_get_contents("https://xsot.cn/api/detection/?type=shorturl&&domain=" . $_SERVER['HTTP_HOST']);
       header("Refresh:4;url=\"./index.php\"");
     }

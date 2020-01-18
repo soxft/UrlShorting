@@ -1,7 +1,7 @@
 <?php
-include('./config.php');
-include('./app/ip.php');
-include('./app/time.php');
+require_once('./config.php');
+require_once('./app/ip.php');
+require_once('./app/time.php');
 function access($shorturl,$domain,$type){
 global $conn;
 global $ip;

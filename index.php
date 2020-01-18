@@ -26,10 +26,6 @@ if ($status == "undefind" || empty($status)) {
     echo("<br / ><div class=\"mdui-card\"><center><br / ><img src=\"https://3gimg.qq.com/tele_safe/safeurl/img/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
     echo('<center><h2>你访问的页面不存在!</h2></center></div>');
     goto pass;
-} elseif ($status == "openerror") {
-    echo("<br / ><div class=\"mdui-card\"><br/><center><h2>为了安全起见,请点击右上角的 ··· 并选择用浏览器打开!<br/><br/></h2></center></div>");
-    //判断打开浏览器UA是否为微信或者QQ
-    goto pass;
 }
 if ($status == "passmessage") {
     //如果数据库type读取为密语
@@ -41,7 +37,7 @@ if ($status == "passmessage") {
       <div class=\"mdui-card\">
       <div class=\"mdui-card-primary\">
         <div class=\"mdui-card-primary-subtitle\">$timemessage</div>
-        <center><div class=\"mdui-card-primary-title\" style=\"word-break:break-all;\">「" . $information . "」</div></center>
+        <center><div class=\"mdui-card-primary-title\" style=\"word-break:break-all;\">「" . htmlspecialchars($information) . "」</div></center>
         <br />
       </div>
   </div>
@@ -197,5 +193,5 @@ if (isset($_POST['submit'])) {
 ?>
 <?php
 pass:
-include('footer.php');
+require_once('footer.php');
 ?>

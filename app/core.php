@@ -4,9 +4,9 @@
   Powered by xcsoft
   版权所有,盗版必究
 */
+require_once('./config.php');
 require_once('./app/record.php');
 require_once('./app/time.php');
-require_once('./config.php');
 require_once('./app/ip.php');
 function Urlshorting($content,$type) {
   global $ip;
@@ -57,7 +57,7 @@ function Urlshorting($content,$type) {
     @$shorturl = $arr1['shorturl'];
     //如果已存在则
     if (!empty($shorturl)) {
-      return array(200,$url . $shorturl);
+      return array(200,$url . $shorturl);     
       exit;
     }
     //如果不存在则
