@@ -12,6 +12,16 @@ require_once('./app/record.php');
 require_once('./app/code.php');
 $id = $_GET['id'];
 //获取id
+$check1 = "SELECT *FROM `ban` where `content`='$ip' or `content`='$id';";
+$count1 = mysqli_query($conn,$check1);
+$arr1 = mysqli_fetch_assoc($count1);
+$type = $arr1['type'];
+if (!empty($type)) {
+    echo("<br / ><center><img src=\"https://3gimg.qq.com/tele_safe/safeurl/img/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
+    echo('<center><h1>对不起,您输入的域名或您的IP已被封禁,请联系网站管理员进行处理!</h1></center></div>');
+    exit();
+}
+//检索用户ip是否被封禁
 if (empty($id)) {
   $status = "ok";
   //如果没有id就跳过判断

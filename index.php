@@ -6,17 +6,6 @@ if (!file_exists("install.lock")) {
 } else {}
 require_once('header.php');
 require_once('./app/delete.php');
-$check1 = "SELECT *FROM `ban` where `content`='$ip' or `content`='$id';";
-$count1 = mysqli_query($conn,$check1);
-$arr1 = mysqli_fetch_assoc($count1);
-$type = $arr1['type'];
-if (!empty($type)) {
-    echo("<br / ><div class=\"mdui-card\"><center><img src=\"https://3gimg.qq.com/tele_safe/safeurl/img/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
-    echo('<center><h1>对不起,您输入的域名或您的IP已被封禁,请联系网站管理员进行处理!</h1></center></div>');
-    goto pass;
-}
-//检索用户ip是否被封禁
-
 if (date("i") == 00 || date("i") == 10 || date("i") == 20 || date("i") == 30 || date("i") == 40 || date("i") == 50) {
     del("./qrcode/");
 }
