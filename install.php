@@ -74,7 +74,6 @@
       </center>
       </form>
       <?php
-      $title = $title . " - Powered by XCSOFT";
     } else {
       if (empty($_POST['db_host']) || empty($_POST['db_username']) || empty($_POST['db_name']) || empty($_POST['db_password']) || empty($_POST['url']) || empty($_POST['title']) || empty($_POST['title1']) || empty($_POST['pass']) || empty($_POST['strPol']) || empty($_POST['access']) || empty($_POST['passwd']) || empty($_POST['notices'])) {
         exit("<br/><center><h1>请检查您是否填写完全部内容后重试!</h1></center>");
@@ -92,6 +91,7 @@
         $access = $_POST['access'];
         $passwd = $_POST['passwd'];
       }
+      $title = $title . " - Powered by XCSOFT";
       @$conn = mysqli_connect($db_host,$db_username,$db_password,$db_name);
       if ($conn) {
         $accessx = "CREATE TABLE access (
