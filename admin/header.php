@@ -16,8 +16,16 @@ $password = $_SESSION['password'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title><?php echo($title);?></title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/mdui/0.4.2/css/mdui.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/mdui/0.4.2/js/mdui.min.js"></script>
+    <link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/css/mdui.min.css">
+    <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
+    <style>
+    a {
+      text-decoration:none
+    }
+    a:hover {
+      text-decoration:none
+    }
+  </style>
    <?php
    if ($_SESSION['password'] !== $passwd) {
     //判断是否登录
@@ -30,7 +38,6 @@ $password = $_SESSION['password'];
         echo("<a href=\"./index.php\" class=\"mdui-ripple\">管理首页</a>");
         echo("<a href=\"./ban.php\" class=\"mdui-ripple\">BAN</a>");
         echo("<a href=\"./control.php\" class=\"mdui-ripple\">短域管理</a>");
-        echo("<a href=\"./notice.php\" class=\"mdui-ripple\">公告修改</a>");
         echo("<a href=\"./update.php\" class=\"mdui-ripple\">检查更新</a>");
         echo("<a href=\"./logout.php\" class=\"mdui-ripple\">退出登录</a>");
         echo("<a href=\"../index.php\" class=\"mdui-ripple\">返回前台</a>");

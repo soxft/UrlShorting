@@ -23,8 +23,6 @@ echo <<<EOF
 <br/>
 作者：XCSOFT(XSOT.CN)<br/>
 <br/>
-美化：Hiram·Wong(CATNI.CN)<br/>
-<br/>
 使用语言(框架)：PHP HTML MDUI MYSQL<br/>
   </div>
   <div class="mdui-card-actions">

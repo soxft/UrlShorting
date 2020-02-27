@@ -36,6 +36,7 @@ $password = $_SESSION['password'];
                 <label class="mdui-textfield-label">密码</label>
                 <input name="password" type="password" class="mdui-textfield-input" />
             </div>
+            <br />
             <center>
                 <input class="mdui-btn mdui-btn-raised mdui-ripple" type="submit" name="submit" value="登陆" />
             </center>

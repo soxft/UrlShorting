@@ -41,10 +41,6 @@
         <input name="url" type="text" class="mdui-textfield-input" value="http://<?php echo$_SERVER['HTTP_HOST'] ?>/" />
       </div>
       <div class="mdui-textfield mdui-textfield-floating-label">
-        <label class="mdui-textfield-label">默认公告</label>
-        <input name="notices" type="text" class="mdui-textfield-input" value="欢迎使用星辰短域|密语!" />
-      </div>
-      <div class="mdui-textfield mdui-textfield-floating-label">
         <label class="mdui-textfield-label">网站标题(网页中所显示的)</label>
         <input name="title1" type="text" class="mdui-textfield-input" value="星辰短域|密语" />
       </div>
@@ -75,7 +71,7 @@
       </form>
       <?php
     } else {
-      if (empty($_POST['db_host']) || empty($_POST['db_username']) || empty($_POST['db_name']) || empty($_POST['db_password']) || empty($_POST['url']) || empty($_POST['title']) || empty($_POST['title1']) || empty($_POST['pass']) || empty($_POST['strPol']) || empty($_POST['access']) || empty($_POST['passwd']) || empty($_POST['notices'])) {
+      if (empty($_POST['db_host']) || empty($_POST['db_username']) || empty($_POST['db_name']) || empty($_POST['db_password']) || empty($_POST['url']) || empty($_POST['title']) || empty($_POST['title1']) || empty($_POST['pass']) || empty($_POST['strPol']) || empty($_POST['access']) || empty($_POST['passwd'])) {
         exit("<br/><center><h1>请检查您是否填写完全部内容后重试!</h1></center>");
       } else {
         $db_host = $_POST['db_host'];
@@ -129,8 +125,7 @@
         $sql5 = "INSERT INTO `config` VALUES('access','$access');";
         $sql6 = "INSERT INTO `config` VALUES('passwd','$passwd');";
         $sql7 = "INSERT INTO `config` VALUES('px','25');";
-        $sql8 = "INSERT INTO `config` VALUES('version','1.6.5');";
-        $sql9 = "INSERT INTO `notice` VALUES('adminer','$notices');";
+        $sql8 = "INSERT INTO `config` VALUES('version','1.7.0');";
         mysqli_query($conn,$accessx);
         mysqli_query($conn,$banx);
         mysqli_query($conn,$informationx);
@@ -145,7 +140,6 @@
         mysqli_query($conn,$sql6);
         mysqli_query($conn,$sql7);
         mysqli_query($conn,$sql8);
-        mysqli_query($conn,$sql9);
       } else {
         exit("<br/><center><h1>数据库连接失败!请确认数据库信息填写正确!</h1></center>");
       }
