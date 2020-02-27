@@ -113,10 +113,6 @@
       time char(20)	NOT NULL,
       ip char(20)	NOT NULL
       )";
-        $notice = "CREATE TABLE notice(
-      updater	mediumtext NOT NULL,
-      notices mediumtext	NOT NULL
-      )";
         $config = "CREATE TABLE config(
       type mediumtext NOT NULL,
       content mediumtext	NOT NULL
@@ -133,7 +129,6 @@
         mysqli_query($conn,$accessx);
         mysqli_query($conn,$banx);
         mysqli_query($conn,$informationx);
-        mysqli_query($conn,$notice);
         mysqli_query($conn,$config);
         mysqli_query($conn,$sql);
         mysqli_query($conn,$sql1);
