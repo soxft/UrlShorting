@@ -21,6 +21,11 @@ if (!-e $request_filename) {
 
 IIS请尝试自己转换.
 <br/>5.访问网站进行确认.
+# 升级向导
+### 对于升级1.7.0
+1.进入mysql数据库执行`drop table config;drop table notice;`<br />
+2.删除网址根目录,可以直接下载最新源码上传至服务器重新安装,不影响原有数据
+
 ## 版权
 xcsoft版权所有 改源码依据apache2开源协议开源,请不要修改版权信息！
 ## 更新
