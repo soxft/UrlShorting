@@ -90,6 +90,10 @@
       $title = $title . " - Powered by XCSOFT";
       @$conn = mysqli_connect($db_host,$db_username,$db_password,$db_name);
       if ($conn) {
+        $drop1 = "drop table `config`";
+        $drop2 = "drop table `notice`";
+        mysqli_query($conn,$drop1);
+        mysqli_query($conn,$drop2);
         $accessx = "CREATE TABLE access (
       shorturl char(10) NOT NULL,
       domain mediumtext NOT NULL,
