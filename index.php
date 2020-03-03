@@ -87,7 +87,10 @@ if ($status == "passmessage") {
     document.getElementById("Submit").innerHTML = "处理中...";
     var content = document.getElementById("content").value;
     var type = getRadioBoxValue("type");
-    var content = escape(content);
+    if(type == "shorturl")
+    {
+        var content = escape(content);
+    }
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "./submit.php");
     xhr.setRequestHeader('Content-Type', ' application/x-www-form-urlencoded');
