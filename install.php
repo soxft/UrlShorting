@@ -79,7 +79,6 @@
         $db_password = $_POST['db_password'];
         $db_name = $_POST['db_name'];
         $url = $_POST['url'];
-        $notices = $_POST['notices'];
         $title = $_POST['title'];
         $title1 = $_POST['title1'];
         $pass = $_POST['pass'];
@@ -90,6 +89,10 @@
       $title = $title . " - Powered by XCSOFT";
       @$conn = mysqli_connect($db_host,$db_username,$db_password,$db_name);
       if ($conn) {
+        @$drop1 = "drop table `config`";
+        @$drop2 = "drop table `notice`";
+        @mysqli_query($conn,$drop1);
+        @mysqli_query($conn,$drop2);
         $accessx = "CREATE TABLE access (
       shorturl char(10) NOT NULL,
       domain mediumtext NOT NULL,
@@ -109,10 +112,6 @@
       time char(20)	NOT NULL,
       ip char(20)	NOT NULL
       )";
-        $notice = "CREATE TABLE notice(
-      updater	mediumtext NOT NULL,
-      notices mediumtext	NOT NULL
-      )";
         $config = "CREATE TABLE config(
       type mediumtext NOT NULL,
       content mediumtext	NOT NULL
@@ -125,11 +124,10 @@
         $sql5 = "INSERT INTO `config` VALUES('access','$access');";
         $sql6 = "INSERT INTO `config` VALUES('passwd','$passwd');";
         $sql7 = "INSERT INTO `config` VALUES('px','25');";
-        $sql8 = "INSERT INTO `config` VALUES('version','1.7.1');";
+        $sql8 = "INSERT INTO `config` VALUES('version','1.7.1');";d
         mysqli_query($conn,$accessx);
         mysqli_query($conn,$banx);
         mysqli_query($conn,$informationx);
-        mysqli_query($conn,$notice);
         mysqli_query($conn,$config);
         mysqli_query($conn,$sql);
         mysqli_query($conn,$sql1);
