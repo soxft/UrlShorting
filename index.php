@@ -87,6 +87,7 @@ if ($status == "passmessage") {
     document.getElementById("Submit").innerHTML = "处理中...";
     var content = document.getElementById("content").value;
     var type = getRadioBoxValue("type");
+    var content = escape(content);
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "./submit.php");
     xhr.setRequestHeader('Content-Type', ' application/x-www-form-urlencoded');
@@ -108,9 +109,10 @@ if ($status == "passmessage") {
     <div class="mdui-typo">
          <h2>帮助</h2>
          1.输入短域请加上http(s)://<br />
-         2.网址最长支持1000字符<br />
-         3.密语最长支持3000字符(合1000汉字)<br />
-         4.其余详见菜单-帮助界面
+         2.中文域名请手动Punycode编码后再使用<br />
+         3.网址最长支持1000字符<br />
+         4.密语最长支持3000字符(合1000汉字)<br />
+         5.其余详见菜单-帮助界面
     </div>
 </div>
 <?php require_once "footer.php"; ?>

@@ -2,9 +2,10 @@
 <div class="mdui-container doc-container">
     <div class="mdui-typo">
          <h2>帮助</h2>
-        1.输入短域请加上http(s)://<br />
-        2.网址最长支持1000字符<br />
-        3.密语最长支持3000字符(合1000汉字)<br />
+         1.输入短域请加上http(s)://<br />
+         2.中文域名请手动Punycode编码后再使用<br />
+         3.网址最长支持1000字符<br />
+         4.密语最长支持3000字符(合1000汉字)
     </div>
 </div>
 <div class="mdui-container doc-container">
@@ -12,26 +13,35 @@
          <h2>Api接口</h2>
         <div class="mdui-table-fluid">
             <table class="mdui-table mdui-table-hoverable">
+                <tbody>
+                    <tr>
+                        <td>接口地址</td>
+                        <td>
+                            <?php echo $url ?>api.php</td>
+                    </tr>
+                    <tr>
+                        <td>注意</td>
+                        <td>请使用post来访问Api</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mdui-table-fluid">
+            <table class="mdui-table mdui-table-hoverable">
                 <thead>
                     <tr>
-                        <th>说明</th>
-                        <th>Api接口</th>
+                        <th>参数名</th>
+                        <th>含义</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>短域</td>
-                        <td>
-                            <?php echo $url ?>api.php?d=所需缩短的网址</td>
+                        <td>d</td>
+                        <td>需要缩短的网址</td>
                     </tr>
                     <tr>
-                        <td>密语</td>
-                        <td>
-                            <?php echo $url ?>api.php?m=你所需的密语</td>
-                    </tr>
-                    <tr>
-                        <td>注意</td>
-                        <td>请先将长网址或密语中所有的'&'替换为'~'后再使用api接口!</td>
+                        <td>m</td>
+                        <td>需要缩短的密语</td>
                     </tr>
                 </tbody>
             </table>

@@ -2,10 +2,8 @@
 require_once "./app/core.php";                         //require网址缩短核心文件
 require_once "./app/qrcode.php";
 //获取用户的ip
-$domain = $_GET['d'];
-$passmessage = $_GET['m'];
-$domain = str_replace("~","&",$domain);
-$passmessage = str_replace("~","&",$passmessage);
+$domain = $_POST['d'];
+$passmessage = $_POST['m'];
 //替换原网址中的&&防止出错
 if(empty($domain)&&empty($passmessage)){
     $data = array(
