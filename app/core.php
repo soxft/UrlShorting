@@ -39,17 +39,7 @@ function Urlshorting($content,$type) {
   //判断正式开始
   if ($type == "shorturl") {
     //判断为短域
-        $patern = '/^http[s]?:\/\/'.  
-        '(([0-9]{1,3}\.){3}[0-9]{1,3}'.             // IP形式的URL- 199.194.52.184  
-        '|'.                                        // 允许IP和DOMAIN（域名）  
-        '([0-9a-z_!~*\'()-]+\.)*'.                  // 三级域验证- www.  
-        '([0-9a-z][0-9a-z-]{0,61})?[0-9a-z]\.'.     // 二级域验证  
-        '[a-z]{2,6})'.                              // 顶级域验证.com or .museum  
-        '(:[0-9]{1,4})?'.                           // 端口- :80  
-        '((\/\?)|'.                                 // 如果含有文件对文件部分进行校验  
-        '(\/[0-9a-zA-Z_!~\*\'\(\)\.;\?:@&=\+\$,%#-\/]*)?)$/';
-        
-    if (!preg_match($patern,$content) || strlen($content) > 1000 || strlen($content) < 10) {
+    if (!preg_match('#(http|https)://(.*\.)?.*\..*#i',$content) || strlen($content) > 1000 || strlen($content) < 10) {
       return array(1001);
       exit();
     }
