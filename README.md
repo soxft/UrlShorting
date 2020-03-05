@@ -1,3 +1,5 @@
+[![HitCount](http://hits.dwyl.com/soxft/soxft/URLshorting.svg)](http://hits.dwyl.com/soxft/soxft/URLshorting)
+
 # URLshortening
 ## 简介
 一个url网址缩短平台.
