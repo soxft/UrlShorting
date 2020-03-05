@@ -1,5 +1,5 @@
 # URLshortening
-[![HitCount](http://hits.dwyl.com/soxft/soxft/URLshorting.svg)](http://hits.dwyl.com/soxft/soxft/URLshorting)
+[![HitCount](http://hits.dwyl.com/soxft/soxft/URLshorting.svg)]
 <a href="http://www.apache.org/licenses/LICENSE-2.0.html"> 
 <img src="https://img.shields.io/github/license/soxft/URLshorting.svg" alt="License"></a>
 <a href="https://github.com/soxft/URLshorting/network/members"> 
