@@ -1,4 +1,10 @@
 [![HitCount](http://hits.dwyl.com/soxft/soxft/URLshorting.svg)](http://hits.dwyl.com/soxft/soxft/URLshorting)
+<a href="http://www.apache.org/licenses/LICENSE-2.0.html"> 
+<img src="https://img.shields.io/github/license/soxft/soxft.github.io.svg" alt="License"></a>
+<a href="https://github.com/xinetzone/xinetzone.github.io/network"> 
+<img src="https://img.shields.io/github/forks/soxft/soxft.github.io.svg" alt="GitHub forks"></a> 
+<a href="https://github.com/xinetzone/xinetzone.github.io/stargazers"> 
+<img src="https://img.shields.io/github/forks/soxft/soxft.github.io.svg" alt="GitHub stars"></a>
 
 # URLshortening
 ## 简介
