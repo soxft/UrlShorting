@@ -2,10 +2,10 @@
 ![HitCount](http://hits.dwyl.com/soxft/soxft/URLshorting.svg)
 <a href="http://www.apache.org/licenses/LICENSE-2.0.html"> 
 <img src="https://img.shields.io/github/license/soxft/URLshorting.svg" alt="License"></a>
-<a href="https://github.com/soxft/URLshorting/network/members"> 
-<img src="https://img.shields.io/github/forks/soxft/URLshorting.svg" alt="GitHub forks"></a> 
 <a href="https://github.com/soxft/URLshorting/stargazers"> 
 <img src="https://img.shields.io/github/stars/soxft/URLshorting.svg" alt="GitHub stars"></a>
+<a href="https://github.com/soxft/URLshorting/network/members"> 
+<img src="https://img.shields.io/github/forks/soxft/URLshorting.svg" alt="GitHub forks"></a> 
 ## 简介
 一个url网址缩短平台.
 ## 安装方法
