@@ -124,7 +124,7 @@
         $sql5 = "INSERT INTO `config` VALUES('access','$access');";
         $sql6 = "INSERT INTO `config` VALUES('passwd','$passwd');";
         $sql7 = "INSERT INTO `config` VALUES('px','25');";
-        $sql8 = "INSERT INTO `config` VALUES('version','1.7.1');";
+        $sql8 = "INSERT INTO `config` VALUES('version','1.7.2');";
         mysqli_query($conn,$accessx);
         mysqli_query($conn,$banx);
         mysqli_query($conn,$informationx);
