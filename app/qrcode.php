@@ -2,11 +2,12 @@
 function qrcode($value,$type="") {
   global $url;
   $name = null;
-  $max = strlen($strPol)-1;
   $strPol = "G8J9KjklmAB1C6H7I20LMNOPabcdefghiD3E4F5nopqrstQRSTUVWXYZuvwxyz";
+  $max = strlen($strPol)-1;
   for($i=0;$i<4;$i++){
     $name.=$strPol[rand(0,$max)];
   }
+  
   $qrcodename='./qrcode/' . $name  . '.png';
   include './app/phpqrcode.php';    
   $errorCorrectionLevel = 'L';//容错级别   
