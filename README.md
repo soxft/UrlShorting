@@ -14,17 +14,20 @@
 3.访问网站域名填写mysql等信息进行安装<br/>
 4.修改网站伪静态配置:<br/>
 Nginx:  
+```
 if (!-e $request_filename) {
-<br/>rewrite ^/(.*)$ /index.php?id=$1 last;
-<br/>}
-
-<br/>Apache:
+rewrite ^/(.*)$ /index.php?id=$1 last;
+}
+```
+Apache:
+```
 <IfModule mod_rewrite.c>
-<br/>RewriteEngine On
-<br/>RewriteCond %{REQUEST_FILENAME} !-f
-<br/>RewriteCond %{REQUEST_FILENAME} !-d
-<br/>RewriteRule ^(.*)$ /index.php?id=$1 [L]
-<br/></IfModule>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php?id=$1 [L]
+</IfModule>
+```
 
 IIS请尝试自己转换.
 <br/>5.访问网站进行确认.
