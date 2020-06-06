@@ -15,10 +15,31 @@ $shorturl = $_SESSION['shorturl'];
         <center>
           <br />
           <?php qrcode($shorturl,"show"); ?>
-          <h3>短链接:<?php echo $shorturl ?></h3>
+          <h3>短链接:<div class="URL" id="URL" onclick="myCopyFunction()"><?PHP echo($shorturl); ?></div></h3>
         </center>
     </div>
 </div>
+<style>
+.URL{
+  cursor:pointer;
+}
+</style>
+<script>
+function myCopyFunction() {
+  var myText = document.createElement("textarea")
+  myText.value = document.getElementById("URL").innerHTML;
+  myText.value = myText.value.replace(/&lt;/g,"<");
+  myText.value = myText.value.replace(/&gt;/g,">");
+  document.body.appendChild(myText)
+  myText.focus();
+  myText.select();
+  document.execCommand('copy');
+  document.body.removeChild(myText);
+  mdui.snackbar("链接已复制");
+}
+</script>
+
+
 <?php
 unset($_SESSION['shorturl']);
 require_once "footer.php";

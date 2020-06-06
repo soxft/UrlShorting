@@ -22,7 +22,7 @@ if (empty($id)) {
   $arr1 = mysqli_fetch_assoc($count1);
   $type = $arr1['type'];
   if (!empty($type)) {
-    echo("<br / ><br / ><center><img src=\"https://3gimg.qq.com/tele_safe/safeurl/img/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
+    echo("<br / ><br / ><center><img src=\"https://cdn.jsdelivr.net/gh/soxft/cdn@master/urlshorting/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
     echo('<center><h1>该短域已被管理员封禁</h1></center></div>');
     exit();
   }
@@ -44,7 +44,7 @@ if (empty($id)) {
                 <head>
                   <meta charset="UTF-8">
                   <title>请使用浏览器打开</title>
-                  <link rel="shortcut icon" type="image/x-icon" href="./assets/img/favicon.ico" media="screen" />
+                  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/soxft/cdn@latest/urlshorting/favicon.ico" media="screen" />
                   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
                   <meta content="yes" name="apple-mobile-web-app-capable">
                   <meta content="black" name="apple-mobile-web-app-status-bar-style">
@@ -70,8 +70,8 @@ if (empty($id)) {
                   <div class="app-download-tip">
                     <span class="guidance-desc">或者复制本站网址自行打开</span>
                   </div>
-                  <script src="./assets/js/jquery.min.js"></script>
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+                  <script src="https://cdn.jsdelivr.net/gh/soxft/cdn@master/jquery/jquery.min.js"></script>
+                  <script src="https://cdn.jsdelivr.net/gh/soxft/cdn@1.9/urlshorting/clipboard.min.js"></script>
                   <script src="https://cdn.bootcss.com/layer/2.3/layer.js"></script>
                   <a data-clipboard-text="'.$url . $id.'" class="app-download-btn">点此复制本站网址</a>
                   <script type="text/javascript">
@@ -83,7 +83,7 @@ if (empty($id)) {
                     });})
                   </script>
                 </html>';
-        exit;
+                exit;
       }else {
       if (preg_match('/[\x{4e00}-\x{9fa5}]/u',$information) > 0) {
         $informations = parseurl($information);
