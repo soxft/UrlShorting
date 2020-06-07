@@ -15,7 +15,7 @@ $shorturl = $_SESSION['shorturl'];
         <center>
           <br />
           <?php qrcode($shorturl,"show"); ?>
-          <h3>短链接:<div class="URL" id="URL" onclick="myCopyFunction()"><?PHP echo($shorturl); ?></div></h3>
+          <h3>短链接:<div class="URL" id="URL" data-clipboard-text="<?PHP echo($shorturl); ?>"><?PHP echo($shorturl); ?></div></h3>
         </center>
     </div>
 </div>
@@ -24,19 +24,15 @@ $shorturl = $_SESSION['shorturl'];
   cursor:pointer;
 }
 </style>
+<script src="https://cdn.jsdelivr.net/gh/soxft/cdn@master/jquery/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/soxft/cdn@1.9/urlshorting/clipboard.min.js"></script>
 <script>
-function myCopyFunction() {
-  var myText = document.createElement("textarea")
-  myText.value = document.getElementById("URL").innerHTML;
-  myText.value = myText.value.replace(/&lt;/g,"<");
-  myText.value = myText.value.replace(/&gt;/g,">");
-  document.body.appendChild(myText)
-  myText.focus();
-  myText.select();
-  document.execCommand('copy');
-  document.body.removeChild(myText);
-  mdui.snackbar("链接已复制");
-}
+    new ClipboardJS(".URL");
+    $(".URL").click(function() {
+        mdui.snackbar({
+        message: "链接已复制"
+    });
+    }) 
 </script>
 
 
