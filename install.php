@@ -131,10 +131,18 @@
         mysqli_query($conn,$banx);
         mysqli_query($conn,$informationx);
         mysqli_query($conn,$config);
-        for($i = 1;$i <= 11;$i++)
-        {
-          mysqli_query($conn,$sql . $i);
-        }
+        mysqli_query($conn,$sql1);
+        mysqli_query($conn,$sql2);
+        mysqli_query($conn,$sql3);
+        mysqli_query($conn,$sql4);
+        mysqli_query($conn,$sql5);
+        mysqli_query($conn,$sql6);
+        mysqli_query($conn,$sql7);
+        mysqli_query($conn,$sql8);
+        mysqli_query($conn,$sql9);
+        mysqli_query($conn,$sql10);
+        mysqli_query($conn,$sql11);
+        
       } else {
         exit("<br/><center><h1>数据库连接失败!请确认数据库信息填写正确!</h1></center>");
       }
