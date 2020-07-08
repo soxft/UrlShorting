@@ -124,7 +124,7 @@
         $sql6 = "INSERT INTO `config` VALUES('access','$access');";
         $sql7 = "INSERT INTO `config` VALUES('passwd','$passwd');";
         $sql8 = "INSERT INTO `config` VALUES('QQ','true');";
-        $sql9 = "INSERT INTO `config` VALUES('wechat','false');";
+        $sql9 = "INSERT INTO `config` VALUES('wechat','true');";
         $sql10 = "INSERT INTO `config` VALUES('px','25');";
         $sql11 = "INSERT INTO `config` VALUES('version','1.8.0');";
         mysqli_query($conn,$accessx);
