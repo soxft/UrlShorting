@@ -22,23 +22,40 @@ if (empty($id)) {
   $arr1 = mysqli_fetch_assoc($count1);
   $type = $arr1['type'];
   if (!empty($type)) {
-    echo("<br / ><br / ><center><img src=\"https://cdn.jsdelivr.net/gh/soxft/cdn@master/urlshorting/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
+    echo("<br /><br /><center><img src=\"https://cdn.jsdelivr.net/gh/soxft/cdn@master/urlshorting/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
     echo('<center><h1>该短域已被管理员封禁</h1></center></div>');
     exit();
   }
-  @$comd = "SELECT * FROM `information` WHERE binary `shorturl`='$id'";
-  @$count = mysqli_query($conn,$comd);
-  @$arr1 = mysqli_fetch_array($count);
-  @$type = $arr1['type'];
-  @$information = $arr1['information'];
-  @$timemessage = $arr1['time'];
+  $comd = "SELECT * FROM `information` WHERE binary `shorturl`='$id'";
+  //binary用于强制要求大小写一样
+  $count = mysqli_query($conn,$comd);
+  $arr1 = mysqli_fetch_array($count);
+  $type = $arr1['type'];
+  $information = $arr1['information'];
+  $timemessage = $arr1['time'];
+  //获取基础数据
+  function getResult($conn,$type)
+  {
+    $retun = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM `config` WHERE `type` = '$type'")); 
+    return $retun['content'] == "true" ? true:false; 
+  }
+  if(getResult($conn,"QQ") && strpos($_SERVER['HTTP_USER_AGENT'],'QQ/') !== false)
+  {
+    $ifBrowser = true;
+  }else if(getResult($conn,"wechat") && strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false)
+  {
+    $ifBrowser = true;
+  }else{
+    $ifBrowser = false;
+  }
+  //判断用户选项
   if (empty($type)) {
     $status = "undefind";
     //无数据
   } else {
     if ($type == 'shorturl') {
       //如果数据库type读取为短域
-      if (strpos($_SERVER['HTTP_USER_AGENT'],'QQ/') !== false or strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false) {
+      if ($ifBrowser) {
         //判断打开浏览器UA是否为微信或者QQ
         echo '<html>
                 <head>
@@ -115,9 +132,9 @@ if (empty($id)) {
   <title>
     <?php echo($title);?>
   </title>
-  <link rel="shortcut icon" type="image/x-icon" href="./assets/img/favicon.ico" media="screen" />
-  <link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/css/mdui.min.css">
-<script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.3/js/mdui.min.js"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/soxft/cdn@1.9/urlshorting/favicon.ico" media="screen" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/soxft/cdn@master/mdui/css/mdui.min.css">
+<script src="https://cdn.jsdelivr.net/gh/soxft/cdn@master/mdui/js/mdui.min.js"></script>
   <script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
   </head>
   <header class="mdui-appbar mdui-appbar-fixed">
@@ -129,7 +146,7 @@ if (empty($id)) {
       text-decoration:none
     }
   </style>
-  <body background="/assets/img/background.png" class="mdui-drawer-body-left mdui-appbar-with-toolbar">
+  <body background="https://cdn.jsdelivr.net/gh/soxft/cdn@1.9/urlshorting/background.png" class="mdui-drawer-body-left mdui-appbar-with-toolbar">
     <div class="mdui-toolbar mdui-color-theme">
       <span class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: '#main-drawer'}">
         <i class="mdui-icon material-icons">menu</i>

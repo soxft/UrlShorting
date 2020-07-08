@@ -116,28 +116,25 @@
       type mediumtext NOT NULL,
       content mediumtext	NOT NULL
       )";
-        $sql = "INSERT INTO `config` VALUES('url','$url');";
-        $sql1 = "INSERT INTO `config` VALUES('title','$title');";
-        $sql2 = "INSERT INTO `config` VALUES('title1','$title1');";
-        $sql3 = "INSERT INTO `config` VALUES('pass','$pass');";
-        $sql4 = "INSERT INTO `config` VALUES('strPol','$strPol');";
-        $sql5 = "INSERT INTO `config` VALUES('access','$access');";
-        $sql6 = "INSERT INTO `config` VALUES('passwd','$passwd');";
-        $sql7 = "INSERT INTO `config` VALUES('px','25');";
-        $sql8 = "INSERT INTO `config` VALUES('version','1.7.3');";
+        $sql1 = "INSERT INTO `config` VALUES('url','$url');";
+        $sql2 = "INSERT INTO `config` VALUES('title','$title');";
+        $sql3 = "INSERT INTO `config` VALUES('title1','$title1');";
+        $sql4 = "INSERT INTO `config` VALUES('pass','$pass');";
+        $sql5 = "INSERT INTO `config` VALUES('strPol','$strPol');";
+        $sql6 = "INSERT INTO `config` VALUES('access','$access');";
+        $sql7 = "INSERT INTO `config` VALUES('passwd','$passwd');";
+        $sql8 = "INSERT INTO `config` VALUES('QQ','true');";
+        $sql9 = "INSERT INTO `config` VALUES('wechat','false');";
+        $sql10 = "INSERT INTO `config` VALUES('px','25');";
+        $sql11 = "INSERT INTO `config` VALUES('version','1.8.0');";
         mysqli_query($conn,$accessx);
         mysqli_query($conn,$banx);
         mysqli_query($conn,$informationx);
         mysqli_query($conn,$config);
-        mysqli_query($conn,$sql);
-        mysqli_query($conn,$sql1);
-        mysqli_query($conn,$sql2);
-        mysqli_query($conn,$sql3);
-        mysqli_query($conn,$sql4);
-        mysqli_query($conn,$sql5);
-        mysqli_query($conn,$sql6);
-        mysqli_query($conn,$sql7);
-        mysqli_query($conn,$sql8);
+        for($i = 1;$i <= 11;$i++)
+        {
+          mysqli_query($conn,$sql . $i);
+        }
       } else {
         exit("<br/><center><h1>数据库连接失败!请确认数据库信息填写正确!</h1></center>");
       }
@@ -155,15 +152,15 @@
       $config_strings .= "\$arr = mysqli_fetch_assoc(\$sql);\n";
       $config_strings .= "return \$arr['content'];\n";
       $config_strings .= "}\n";
-      $config_strings .= "\$url=content(\"url\");         \n//你的网站地址,不要忘记最后的'/'\n";
-      $config_strings .= "\$title1=content(\"title1\");   \n//网站标题(网页中所显示的)\n";
-      $config_strings .= "\$title=content(\"title\");   \n//网站标题(网页标签所显示的）\n";
-      $config_strings .= "\$pass=content(\"pass\");       \n//短网址后需要的字母或数字个数,推荐4个以上,最长20!(请填写数字)\n";
-      $config_strings .= "\$strPol=content(\"strPol\");   \n//短网址包含的内容,即短网址后会出现的字符\n";
-      $config_strings .= "\$access=content(\"access\");   \n//设置后台统计(access)是否打开on->开启/其余字符关闭\n";
-      $config_strings .= "\$passwd=content(\"passwd\");   \n//设置后台管理密码\n";
-      $config_strings .= "\$px=content(\"px\");      \n//后台短域管理页面一次显示的短域个数\n";
-      $config_strings .= "\$version=content(\"version\");      \n//当前版本号--请不要修改\n";
+      $config_strings .= "\$url = content(\"url\");         \n//你的网站地址,不要忘记最后的'/'\n";
+      $config_strings .= "\$title1 = content(\"title1\");   \n//网站标题(网页中所显示的)\n";
+      $config_strings .= "\$title = content(\"title\");   \n//网站标题(网页标签所显示的）\n";
+      $config_strings .= "\$pass = content(\"pass\");       \n//短网址后需要的字母或数字个数,推荐4个以上,最长20!(请填写数字)\n";
+      $config_strings .= "\$strPol = content(\"strPol\");   \n//短网址包含的内容,即短网址后会出现的字符\n";
+      $config_strings .= "\$access = content(\"access\");   \n//设置后台统计(access)是否打开on->开启/其余字符关闭\n";
+      $config_strings .= "\$passwd = content(\"passwd\");   \n//设置后台管理密码\n";
+      $config_strings .= "\$px = content(\"px\");      \n//后台短域管理页面一次显示的短域个数\n";
+      $config_strings .= "\$version = content(\"version\");      \n//当前版本号--请不要修改\n";
       $config_strings.= "?>";
       //文件内容
       $fp = fopen($config_file,"wb");
@@ -174,9 +171,9 @@
       fwrite($fp2,'安装锁文件,请勿删除!');
       fclose($fp2);
       //写注册锁
-      echo "<br/><center><h1>安装成功!4s后将为您自动跳转到首页!</h1></center>";
+      echo "<br/><center><h1>安装成功!4s后将为您自动跳转到后台登录界面!</h1></center>";
+      echo "<br/><center><h1>你可以进入后台进入更多设置！</h1></center>";
       echo "<br/><center><h2>非宝塔一键部署用户请注意,你还需要自己手动配置网站伪静态.网站伪静态配置信息请参考根目录下`README.md`中所写内容.</h2></center>";
-      file_get_contents("https://xsot.cn/api/detection/?type=shorturl&&domain=" . $_SERVER['HTTP_HOST']);
-      header("Refresh:4;url=\"./index.php\"");
+      header("Refresh:4;url=\"./admin/\"");
     }
     ?>

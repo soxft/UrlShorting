@@ -2,9 +2,7 @@
     <title>检查更新</title>
     <?php require_once( "./header.php"); ?>
 </head>
-
 <h2>检查更新：</h2>
-
 <div class="mdui-card">
     <ul class="mdui-list">
         <center>

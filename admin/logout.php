@@ -5,10 +5,10 @@
     </head>
     <body>
         <?php
-         session_destroy();
-         echo("<center><h2><br/>你已经成功登出!跳转中!</h2></center>");
-                 header("Refresh:1;url=\"../index.php\"");
-                 ?>
+          session_destroy();
+          echo("<center><h2><br/>你已经成功登出!跳转中!</h2></center>");
+          header("Refresh:1;url=\"../index.php\"");
+        ?>
     </body>
-<?php require_once("../footer.php"); ?>
+  <?php require_once("../footer.php"); ?>
 </html>
