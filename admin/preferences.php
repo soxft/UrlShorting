@@ -14,7 +14,7 @@
               微信
             </div>
             <label class="mdui-switch mdui-valign">
-              <input id="wechat" onclick="red('wechat')" type="checkbox" />
+              <input id="wechat" onclick="switchx('wechat')" type="checkbox" />
               <i class="mdui-switch-icon"></i>
             </label>
           </li>
@@ -23,7 +23,7 @@
               QQ
             </div>
             <label class="mdui-switch mdui-valign">
-              <input id="QQ" onclick="red('QQ')" type="checkbox" />
+              <input id="QQ" onclick="switchx('QQ')" type="checkbox" />
               <i class="mdui-switch-icon"></i>
             </label>
           </li>
@@ -31,6 +31,23 @@
       </div>
     </div>
     <!-- 跳转设置 -->
+    <div class="mdui-container">
+      <div class="mdui-typo">
+        <h4 class="doc-chapter-title doc-chapter-title-first">跳转设置</h4>
+        <ul class="mdui-list">
+          <li class="mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">rotate_90_degrees_ccw</i>
+            <div class="mdui-list-item-content">
+              跳转停留
+            </div>
+            <label class="mdui-switch mdui-valign">
+              <input id="jump" onclick="switchx('jump')" type="checkbox" />
+              <i class="mdui-switch-icon"></i>
+            </label>
+          </li>
+        </ul>
+      </div>
+    </div>
 </div>
 </div>
 <div class="mdui-container">
@@ -41,19 +58,17 @@
 </div>
 <br />
 <?php 
+//计划加功能：access  和 //wq刚想到，就忘记了。。
   function getResult($conn,$type)
   {
     $retun = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM `config` WHERE `type` = '$type'")); 
     return $retun['content'] == "true" ? true:false; 
   }
-  $QQ = getResult($conn,"QQ");
-  $wechat = getResult($conn,"wechat");
-  //$jump = getResult($conn,$type);
 ?>
 <script>
 var $ = mdui.JQ;
 
-function red(type) {
+function switchx(type) {
     $('#' + type + '').attr("disabled", true);
     //使按钮禁用,防止多次点击
     var x = $('#' + type + '').is(':checked', true);
@@ -80,8 +95,9 @@ function red(type) {
 }
 //后台获取数据
         //console.log(QQ+'  '+wechat)
-        $('#QQ').prop('checked', <?php echo $QQ ?>);
-        $('#wechat').prop('checked', <?php echo $wechat ?>);
+        $('#QQ').prop('checked', <?php echo getResult($conn,"QQ") ?>);
+        $('#wechat').prop('checked', <?php echo getResult($conn,"wechat"); ?>);
+        $('#jump').prop('checked', <?php echo getResult($conn,"jump") ?>);
 </script>
 <?php require_once("../footer.php");
 ?>

@@ -125,8 +125,9 @@
         $sql7 = "INSERT INTO `config` VALUES('passwd','$passwd');";
         $sql8 = "INSERT INTO `config` VALUES('QQ','true');";
         $sql9 = "INSERT INTO `config` VALUES('wechat','true');";
-        $sql10 = "INSERT INTO `config` VALUES('px','25');";
-        $sql11 = "INSERT INTO `config` VALUES('version','1.8.0');";
+        $sql10 = "INSERT INTO `config` VALUES('jump','true');";
+        $sql11 = "INSERT INTO `config` VALUES('px','25');";
+        $sql12 = "INSERT INTO `config` VALUES('version','1.8.1');";
         mysqli_query($conn,$accessx);
         mysqli_query($conn,$banx);
         mysqli_query($conn,$informationx);
@@ -142,7 +143,7 @@
         mysqli_query($conn,$sql9);
         mysqli_query($conn,$sql10);
         mysqli_query($conn,$sql11);
-        
+        mysqli_query($conn,$sql12);        
       } else {
         exit("<br/><center><h1>数据库连接失败!请确认数据库信息填写正确!</h1></center>");
       }

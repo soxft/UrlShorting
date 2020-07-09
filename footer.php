@@ -14,6 +14,7 @@
     catch (function (err) {
         console.error(err);
     })
+    console.log("\n %c 星辰短域|密语 %c Powered by XCSOFT | xsot.cn ", "color:#444;background:#eee;padding:5px 0;", "color:#eee;background:#444;padding:5px 0;");
     </script>
     <center>
         <div class="mdui-divider"></div>
