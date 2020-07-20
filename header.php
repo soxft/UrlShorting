@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <!--
 版权归属:XCSOFT
 修改时间:2020/07/08
@@ -5,7 +6,6 @@ v1.8.0
 邮箱:contact#xcsoft.top(用@替换#)
 如有任何问题欢迎联系!
 -->
-<!DOCTYPE html>
 <?php
 require_once "config.php";
 require_once "app/record.php";
@@ -17,19 +17,15 @@ if (empty($id)) {
   //如果没有id就跳过判断
 } else {
   //如果有id则搜索数据库
-  $check1 = "SELECT *FROM `ban` where `content`='$ip' or `content`='$id';";
-  $count1 = mysqli_query($conn,$check1);
-  $arr1 = mysqli_fetch_assoc($count1);
+  $arr1 = mysqli_fetch_assoc(mysqli_query($conn,"SELECT *FROM `ban` where `content`='$ip' or `content`='$id'"));
   $type = $arr1['type'];
   if (!empty($type)) {
     echo("<br /><br /><center><img src=\"https://cdn.jsdelivr.net/gh/soxft/cdn@master/urlshorting/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
     echo('<center><h1>该短域已被管理员封禁</h1></center></div>');
     exit();
   }
-  $comd = "SELECT * FROM `information` WHERE binary `shorturl`='$id'";
+  $arr1 = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM `information` WHERE binary `shorturl`='$id'"));
   //binary用于强制要求大小写一样
-  $count = mysqli_query($conn,$comd);
-  $arr1 = mysqli_fetch_array($count);
   $type = $arr1['type'];
   $information = $arr1['information'];
   $timemessage = $arr1['time'];
