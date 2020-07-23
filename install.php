@@ -114,7 +114,7 @@
       configAdd($conn,'jump','true');
       configAdd($conn,'urlcheck','true');
       configAdd($conn,'px','25');
-      configAdd($conn,'version','1.9.1');
+      configAdd($conn,'version','2.0.0');
       } else {
         exit("<br/><center><h1>数据库连接失败!请确认数据库信息填写正确!</h1></center>");
       }
