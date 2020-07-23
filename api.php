@@ -4,6 +4,9 @@ require_once "./app/qrcode.php";
 //获取用户的ip
 $domain = $_POST['d'];
 $passmessage = $_POST['m'];
+$shorturl = $_POST['u'];
+$passwd = $_POST['passwd'];
+
 //替换原网址中的&&防止出错
 if(empty($domain)&&empty($passmessage)){
     $data = array(
@@ -16,7 +19,7 @@ if(empty($domain)&&empty($passmessage)){
 }
 
 if(empty($passmessage)&&!empty($domain)){         //如果判断为短域
-$arr=Urlshorting($domain,"shorturl");
+$arr = Urlshorting($domain,"shorturl",$shorturl,$passwd);
 if($arr[0]!==200){
   $data = array(
     'code' => $arr[0]
@@ -38,7 +41,7 @@ if($arr[0]!==200){
 }
 }  
 if(!empty($passmessage)&&empty($domain)){          //如果判断为密语
-$arr=Urlshorting($passmessage,"passmessage");
+$arr = Urlshorting($passmessage,"passmessage",$shorturl,$passwd);
 if($arr[0]!==200){
   $data = array(
     'code' => $arr[0]

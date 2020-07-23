@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>短域管理</title>
+    <title>短域管理 - 星辰短域|密语</title>
     <?php
     require_once("./header.php");
     $p = $_GET['p'];
@@ -32,6 +32,7 @@
                                 <th>内容</th>
                                 <th>种类</th>
                                 <th>ip</th>
+                                <th>密码</th>
                                 <th>时间</th>
                                 <th>短域状态</th>
                                 <th>IP状态</th>
@@ -65,6 +66,7 @@
         <td>$row->information</td>
         <td>$row->type</td>
         <td>$row->ip</td>
+        <td>$row->passwd</td>
         <td>$row->time</td>
         <td>$check</td>
         <td>$check2</td>

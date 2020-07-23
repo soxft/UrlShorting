@@ -7,9 +7,9 @@ v1.8.0
 如有任何问题欢迎联系!
 -->
 <?php
+session_start();
 require_once "config.php";
-require_once "app/record.php";
-require_once "app/code.php";
+require_once "app/code.php";    
 $id = $_GET['id'];
 //获取id
 if (empty($id)) {
@@ -27,6 +27,7 @@ if (empty($id)) {
   $arr1 = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM `information` WHERE binary `shorturl`='$id'"));
   //binary用于强制要求大小写一样
   $type = $arr1['type'];
+  $shorturlPasswd = $arr1['passwd'];
   $information = $arr1['information'];
   $timemessage = $arr1['time'];
   //获取基础数据
@@ -49,33 +50,36 @@ if (empty($id)) {
     $status = "undefind";
     //无数据
   } else {
-    if ($type == 'shorturl') {
-      //如果数据库type读取为短域
-      if ($ifBrowser) {
+    if ($ifBrowser) {
         //判断打开浏览器UA是否为微信或者QQ
         require_once("./app/openInBrowser.php");
         exit();
-      } else {
+    }
+    $_SESSION['passwd'] = $shorturlPasswd;
+    //var_dump($_SESSION['passwdthrough']);
+    if(!empty($shorturlPasswd) && !$_SESSION['passwdthrough']){
+        //加密
+        require_once "app/passwd.php";
+        exit();
+    }
+    unset($_SESSION['passwdthrough']); //删除密码session
+    if ($type == 'shorturl') {
+      //如果数据库type读取为短域
       if (preg_match('/[\x{4e00}-\x{9fa5}]/u',$information) > 0) {
         $informations = parseurl($information);
         //转换url格式（endecode）
       } else {
         $informations = $information;
       }
-      if ($access == 'on') {
-        access($id,$information,'shorturl');
-      }
-      //access记录
       if(getResult($conn,"jump"))
       {  //如果打开
-        require_once("./app/jump.php");
+        require_once "app/jump.php";
         exit();
       } else {
         header("Refresh:0;url=\"$informations\"");
         exit();
-      }
+        }
     }
-  }
   if ($type == 'passmessage') {
     $status = "passmessage";
     //passmessage
@@ -90,7 +94,7 @@ if (empty($id)) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
   <meta http-equiv="Cache-Control" content="no-siteapp" />
   <title>
-    <?php echo($title);?>
+    <?php echo $title?>
   </title>
   <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/soxft/cdn@1.9/urlshorting/favicon.ico" media="screen" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/soxft/cdn@master/mdui/css/mdui.min.css">

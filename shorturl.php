@@ -6,8 +6,14 @@ if(!isset($_SESSION['shorturl']))
  exit();
 }
 require_once "header.php";
-require_once "./app/qrcode.php";
+require_once "app/qrcode.php";
 $shorturl = $_SESSION['shorturl'];
+$urlpasswd = $_SESSION['passwd'];
+if(empty($urlpasswd)){
+    $text = $shorturl; 
+}else{
+    $text = "链接: " . $shorturl . " | 密码: " . $urlpasswd;
+}
 ?>
 <div class="mdui-container doc-container">
     <div class="mdui-typo">
@@ -15,7 +21,8 @@ $shorturl = $_SESSION['shorturl'];
         <center>
           <br />
           <?php qrcode($shorturl,"show"); ?>
-          <h3>短链接:<div class="URL" id="URL" data-clipboard-text="<?PHP echo($shorturl); ?>"><?PHP echo($shorturl); ?></div></h3>
+          <h3>短链接:<div class="URL" id="URL" data-clipboard-text="<?PHP echo $text; ?>"><?PHP echo($shorturl); ?><?php if(!empty($urlpasswd)):?><br/>密码: <?php echo $_SESSION['passwd'] ?>
+          <?php endif ?></h3></div>
         </center>
     </div>
 </div>
@@ -38,5 +45,6 @@ $shorturl = $_SESSION['shorturl'];
 
 <?php
 unset($_SESSION['shorturl']);
+unset($_SESSION['passwd']);
 require_once "footer.php";
 ?>

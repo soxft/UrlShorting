@@ -6,7 +6,7 @@ if (!file_exists("install.lock")) {
 //检测是否已经安装
 require_once "header.php";
 require_once "config.php";
-require_once "./app/delete.php";
+require_once "app/delete.php";
 if (date("i")%20 == 0) {
     del("./qrcode/");
 }
@@ -20,9 +20,6 @@ if ($status == "undefind" || empty($status)) {
 }
 if ($status == "passmessage") {
     //如果数据库type读取为密语
-    if ($access == 'on') {
-        access($id,$information,'passmessage');
-    }
     echo "
       <br />
       <div class=\"mdui-card.mdui-card-media-covered-transparent\">
@@ -57,9 +54,16 @@ if ($status == "passmessage") {
     <div class="mdui-typo">
         <h2>短域</h2>
         <div class="mdui-textfield">
-            <input id="content" time="content" class="mdui-textfield-input" type="text" placeholder="请输入链接或密语" />
+            <input id="content" class="mdui-textfield-input" type="text" placeholder="*请输入长链接或密语"/>
         </div>
-        <button onClick="Submit();" id="Submit" class="mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple">
+        <div style="float: left; width: 49.2%;" class="mdui-textfield">
+            <input id="shorturl" class="mdui-textfield-input" type="text" placeholder="请输入自定义短链(可选)"/>
+        </div>
+        <div style="float: right; width: 49.2%;" class="mdui-textfield">
+            <input id="passwd" class="mdui-textfield-input" type="text" placeholder="请输入加密密码(可选)"/>
+        </div>
+        
+        <button onClick="submit();" id="submit" class="mdui-btn mdui-btn-dense mdui-color-theme-accent mdui-ripple">
           <i class="mdui-icon material-icons">send</i>
         </button>
         <label class="mdui-radio">
@@ -74,39 +78,56 @@ if ($status == "passmessage") {
     </div>
 </div>
 <script>
-  function  getRadioBoxValue(radioName) 
-  {   
-    var obj = document.getElementsByName(radioName);
-      for(i=0; i<obj.length;i++)  {
-       if(obj[i].checked)  { 
-         return  obj[i].value; 
-       } 
-      }     
-  }
-  function Submit() {
-    document.getElementById("Submit").innerHTML = "处理中...";
-    var content = document.getElementById("content").value;
-    var type = getRadioBoxValue("type");
-    if(type == "shorturl")
+var $ = mdui.JQ;
+function submit(){
+  type = $('input[name="type"]:checked').val();
+  content = $('#content').val();
+  shorturl = $('#shorturl').val();
+  passwd = $('#passwd').val();
+  $('#submit').attr('disabled',true)
+  $('#submit').text('处理中...')
+  $.ajax({
+    method: 'post',
+    timeout: 10000,
+    url: 'submit.php',
+    data: {
+      type: type,
+      content: content,
+      shorturl: shorturl,
+      passwd: passwd
+    },
+    success: function(data)
     {
-        var content = escape(content);
+      if(data == 200)
+      {
+        mdui.snackbar({
+         message: '缩短成功!',
+         position: 'right-top',
+         timeout: 0
+       });
+       window.setTimeout("window.location='shorturl.php'",2000);
+      }else{
+        mdui.snackbar({
+         message: '缩短失败: <br/>提示信息: ' + data,
+         position: 'right-top'
+       });
+      }
+    },
+    complete: function(xhr,textStatus) 
+    {
+      $('#submit').html('<i class="mdui-icon material-icons">send</i>')
+      $('#submit').removeAttr('disabled');
+      if(textStatus == 'timeout')
+      {
+        mdui.snackbar({
+         message: '请求超时!',
+         position: 'right-top'
+       });
+      }
     }
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "./submit.php");
-    xhr.setRequestHeader('Content-Type', ' application/x-www-form-urlencoded');
-    xhr.send("content=" + content + "&type=" + type);
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            document.getElementById("Submit").innerHTML = "<i class=\"mdui-icon material-icons\">send</i>";
-            if (xhr.responseText == 200) {
-                mdui.snackbar("缩短成功!");
-                window.location.href="shorturl.php";
-            } else {
-                mdui.snackbar(xhr.responseText);
-            }
-        }
-    }
-  }
+  });
+}
+
 </script>
 <div class="mdui-container doc-container">
     <div class="mdui-typo">
@@ -115,7 +136,9 @@ if ($status == "passmessage") {
          2.中文域名请手动Punycode编码后再使用<br />
          3.网址最长支持1000字符<br />
          4.密语最长支持3000字符(合1000汉字)<br />
-         5.其余详见菜单-帮助界面
+         5.手动填写短域以及密码为可选项目<br />
+         6.密码限制2-20位(数字密码组合)/短域限制输入<?php echo $pass ?>位<br/>
+         7.其余详见菜单-帮助界面
     </div>
 </div>
 <?php require_once "footer.php"; ?>

@@ -53,14 +53,6 @@
         <input name="pass" type="text" class="mdui-textfield-input" value="4" />
       </div>
       <div class="mdui-textfield mdui-textfield-floating-label">
-        <label class="mdui-textfield-label">短网址包含的内容</label>
-        <input name="strPol" type="text" class="mdui-textfield-input" value="XluhrIjPoNtmnbyGRFMSfwdCQWpJeBaDTVqKgYHvcALZsxUzEiOk" />
-      </div>
-      <div class="mdui-textfield mdui-textfield-floating-label">
-        <label class="mdui-textfield-label">设置后台统计(access)是否打开on->开启/其余字符关闭</label>
-        <input name="access" type="text" class="mdui-textfield-input" value="on" />
-      </div>
-      <div class="mdui-textfield mdui-textfield-floating-label">
         <label class="mdui-textfield-label">后台管理密码</label>
         <input name="passwd" type="text" class="mdui-textfield-input" value="admin" />
       </div>
@@ -71,7 +63,7 @@
       </form>
       <?php
     } else {
-      if (empty($_POST['db_host']) || empty($_POST['db_username']) || empty($_POST['db_name']) || empty($_POST['db_password']) || empty($_POST['url']) || empty($_POST['title']) || empty($_POST['title1']) || empty($_POST['pass']) || empty($_POST['strPol']) || empty($_POST['access']) || empty($_POST['passwd'])) {
+      if (empty($_POST['db_host']) || empty($_POST['db_username']) || empty($_POST['db_name']) || empty($_POST['db_password']) || empty($_POST['url']) || empty($_POST['title']) || empty($_POST['title1']) || empty($_POST['pass']) || empty($_POST['passwd'])) {
         exit("<br/><center><h1>请检查您是否填写完全部内容后重试!</h1></center>");
       } else {
         $db_host = $_POST['db_host'];
@@ -82,76 +74,52 @@
         $title = $_POST['title'];
         $title1 = $_POST['title1'];
         $pass = $_POST['pass'];
-        $strPol = $_POST['strPol'];
-        $access = $_POST['access'];
         $passwd = $_POST['passwd'];
       }
       $title = $title . " - Powered by XCSOFT";
-      @$conn = mysqli_connect($db_host,$db_username,$db_password,$db_name);
+      $conn = mysqli_connect($db_host,$db_username,$db_password,$db_name);
       if ($conn) {
-        @$drop1 = "drop table `config`";
-        @$drop2 = "drop table `notice`";
-        @mysqli_query($conn,$drop1);
-        @mysqli_query($conn,$drop2);
-        $accessx = "CREATE TABLE access (
-      shorturl char(10) NOT NULL,
-      domain mediumtext NOT NULL,
-      type char(10)	NOT NULL,
-      ip char(30) NOT NULL,
-      time char(30) NOT NULL
+      $banx = "CREATE TABLE ban (
+        type varchar(10) NOT NULL,
+        content	varchar(999) NOT NULL,
+        time varchar(999) NOT NULL
       )";
-        $banx = "CREATE TABLE ban (
-      type varchar(10) NOT NULL,
-      content	varchar(999) NOT NULL,
-      time varchar(999) NOT NULL
+      $informationx = "CREATE TABLE information(
+        information	mediumtext NOT NULL,
+        shorturl char(20)	NOT NULL,
+        type char(20)	NOT NULL,
+        passwd mediumtext NOT NULL,
+        time char(20)	NOT NULL,
+        ip char(20)	NOT NULL
       )";
-        $informationx = "CREATE TABLE information(
-      information	mediumtext NOT NULL,
-      shorturl char(20)	NOT NULL,
-      type char(20)	NOT NULL,
-      time char(20)	NOT NULL,
-      ip char(20)	NOT NULL
+      $config = "CREATE TABLE config(
+        type mediumtext NOT NULL,
+        content mediumtext	NOT NULL
       )";
-        $config = "CREATE TABLE config(
-      type mediumtext NOT NULL,
-      content mediumtext	NOT NULL
-      )";
-        $s1 = "INSERT INTO `config` VALUES('url','$url');";
-        $s2 = "INSERT INTO `config` VALUES('title','$title');";
-        $s3 = "INSERT INTO `config` VALUES('title1','$title1');";
-        $s4 = "INSERT INTO `config` VALUES('pass','$pass');";
-        $s5 = "INSERT INTO `config` VALUES('strPol','$strPol');";
-        $s6 = "INSERT INTO `config` VALUES('access','$access');";
-        $s7 = "INSERT INTO `config` VALUES('passwd','$passwd');";
-        $s8 = "INSERT INTO `config` VALUES('QQ','true');";
-        $s9 = "INSERT INTO `config` VALUES('wechat','true');";
-        $s10 = "INSERT INTO `config` VALUES('jump','true');";
-        $s11 = "INSERT INTO `config` VALUES('urlcheck','true');";
-        $s12 = "INSERT INTO `config` VALUES('px','25');";
-        $s13 = "INSERT INTO `config` VALUES('version','1.9.0');";
-        mysqli_query($conn,$accessx);
-        mysqli_query($conn,$banx);
-        mysqli_query($conn,$informationx);
-        mysqli_query($conn,$config);
-        mysqli_query($conn,$s1);  
-        mysqli_query($conn,$s2);  
-        mysqli_query($conn,$s3);  
-        mysqli_query($conn,$s4);  
-        mysqli_query($conn,$s5);  
-        mysqli_query($conn,$s6);  
-        mysqli_query($conn,$s7);  
-        mysqli_query($conn,$s8);  
-        mysqli_query($conn,$s9);  
-        mysqli_query($conn,$s10);  
-        mysqli_query($conn,$s11);  
-        mysqli_query($conn,$s12);  
-        mysqli_query($conn,$s13);   
+      mysqli_query($conn,$banx);
+      mysqli_query($conn,$informationx);
+      mysqli_query($conn,$config);
+      function configAdd($conn,$type,$content)
+      {
+        mysqli_query($conn,"INSERT INTO `config` VALUES('$type','$content')");
+      }
+      configAdd($conn,'url',$url);
+      configAdd($conn,'title',$title);
+      configAdd($conn,'title1',$title1);
+      configAdd($conn,'pass',$pass);
+      configAdd($conn,'strPolchoice',"123"); //url风格
+      configAdd($conn,'passwd',$passwd);
+      configAdd($conn,'wechat','true');
+      configAdd($conn,'QQ','true');
+      configAdd($conn,'jump','true');
+      configAdd($conn,'urlcheck','true');
+      configAdd($conn,'px','25');
+      configAdd($conn,'version','1.9.1');
       } else {
         exit("<br/><center><h1>数据库连接失败!请确认数据库信息填写正确!</h1></center>");
       }
       //写数据库
       $config_file = "config.php";
-
       $config_strings = "<?php\n";
       $config_strings .= "\$conn=mysqli_connect(\"".$db_host."\",\"".$db_username."\",\"".$db_password."\",\"".$db_name."\");\n";
       $config_strings .= "\$conns=mysqli_connect(\"".$db_host."\",\"".$db_username."\",\"".$db_password."\",\"information_schema\");\n//你的数据库信息\n";
@@ -167,8 +135,7 @@
       $config_strings .= "\$title1 = content(\"title1\");   \n//网站标题(网页中所显示的)\n";
       $config_strings .= "\$title = content(\"title\");   \n//网站标题(网页标签所显示的）\n";
       $config_strings .= "\$pass = content(\"pass\");       \n//短网址后需要的字母或数字个数,推荐4个以上,最长20!(请填写数字)\n";
-      $config_strings .= "\$strPol = content(\"strPol\");   \n//短网址包含的内容,即短网址后会出现的字符\n";
-      $config_strings .= "\$access = content(\"access\");   \n//设置后台统计(access)是否打开on->开启/其余字符关闭\n";
+      $config_strings .= "\$strPolchoice = content(\"strPolchoice\");   \n//短网址包含的内容,即短网址后会出现的字符\n";
       $config_strings .= "\$passwd = content(\"passwd\");   \n//设置后台管理密码\n";
       $config_strings .= "\$px = content(\"px\");      \n//后台短域管理页面一次显示的短域个数\n";
       $config_strings .= "\$version = content(\"version\");      \n//当前版本号--请不要修改\n";

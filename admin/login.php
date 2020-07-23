@@ -46,7 +46,7 @@ if(isset($_POST['passwd']))
               </div>
               <br />
               <center>
-                  <input class="mdui-btn mdui-btn-raised mdui-ripple" id="btn" onclick="login()" value="登陆" />
+                  <button class="mdui-btn mdui-btn-raised mdui-ripple" id="btn" onclick="login()">登陆</button>
               </center>
       </div>
     </div>
@@ -55,7 +55,7 @@ if(isset($_POST['passwd']))
     function login(){
       passwd = $('#password').val();
       $('#btn').attr('disabled',true);
-      $('#btn').val('登陆中...');
+      $('#btn').text('登陆中...')
       //构建ajax请求
       $.ajax({
         method: 'post',
@@ -84,6 +84,7 @@ if(isset($_POST['passwd']))
         },
         complete: function (xhr, textStatus) 
         {
+          $('#btn').text('登陆')
           if(textStatus == 'timeout')
           {
             mdui.snackbar({
