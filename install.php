@@ -2,8 +2,8 @@
 <body background="./assets/img/background.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/mdui/0.4.2/css/mdui.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/mdui/0.4.2/js/mdui.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/soxft/cdn@master/mdui/css/mdui.min.css">
+  <script src="https://cdn.jsdelivr.net/gh/soxft/cdn@master/mdui/js/mdui.min.js"></script>
   <br />
   <center><h2>星辰网站安装系统</h2></center>
   <?php
@@ -114,7 +114,7 @@
       configAdd($conn,'jump','true');
       configAdd($conn,'urlcheck','true');
       configAdd($conn,'px','25');
-      configAdd($conn,'version','2.0.0');
+      configAdd($conn,'version','2.0.1');
       } else {
         exit("<br/><center><h1>数据库连接失败!请确认数据库信息填写正确!</h1></center>");
       }

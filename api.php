@@ -1,65 +1,62 @@
 <?php
-require_once "./app/core.php";                         //require网址缩短核心文件
-require_once "./app/qrcode.php";
-//获取用户的ip
-$domain = $_POST['d'];
-$passmessage = $_POST['m'];
-$shorturl = $_POST['u'];
+require_once "app/core.php";
+require_once "app/ip.php";
+$domain = $_POST['url'];
+$passmessage = $_POST['message'];
+$shorturl = $_POST['shorturl'];
 $passwd = $_POST['passwd'];
 
 //替换原网址中的&&防止出错
-if(empty($domain)&&empty($passmessage)){
-    $data = array(
+if (empty($domain) && empty($passmessage)) {
+  $data = array(
     'code' => '1001'
   );
-  $data_json = json_encode($data);
-  header('Content-type:text/json');
-  echo $data_json;
-  exit;
-}
+} else {
 
-if(empty($passmessage)&&!empty($domain)){         //如果判断为短域
-$arr = Urlshorting($domain,"shorturl",$shorturl,$passwd);
-if($arr[0]!==200){
-  $data = array(
-    'code' => $arr[0]
-  );
-  $data_json = json_encode($data);
-  header('Content-type:text/json');
-  echo $data_json;
-  exit;
-}elseif($arr[0]==200){
-  $data = array(
-    'code' => '200',
-    'shorturl'=> $arr[1],
-    'qrcode' => qrcode($arr[1])
-  );
-  $data_json = json_encode($data);
-  header('Content-type:text/json');
-  echo $data_json;
-  exit;
+  if (!empty($domain)) {
+    //如果判断为短域 (短域优先) 
+    $arr = Urlshorting($domain, "shorturl", $passwd,$shorturl);
+    if ($arr[0] !== 200) {
+      $data = array(
+        'code' => $arr[0]
+      );
+    } elseif ($arr[0] == 200) {
+      if (empty($arr[2])) {
+        $data = array(
+          'code' => '200',
+          'shorturl' => $arr[1]
+        );
+      } else {
+        $data = array(
+          'code' => '200',
+          'shorturl' => $arr[1],
+          'passwd' => $arr[2]
+        );
+      }
+    }
+  } else {
+    //如果判断为密语
+    $arr = Urlshorting($passmessage, "passmessage", $passwd, $shorturl);
+    if ($arr[0] !== 200) {
+      $data = array(
+        'code' => $arr[0]
+      );
+    } elseif ($arr[0] == 200) {
+      if (empty($arr[2])) {
+        $data = array(
+          'code' => '200',
+          'shorturl' => $arr[1]
+        );
+      } else {
+        $data = array(
+          'code' => '200',
+          'shorturl' => $arr[1],
+          'passwd' => $arr[2]
+        );
+      }
+    }
+  }
 }
-}  
-if(!empty($passmessage)&&empty($domain)){          //如果判断为密语
-$arr = Urlshorting($passmessage,"passmessage",$shorturl,$passwd);
-if($arr[0]!==200){
-  $data = array(
-    'code' => $arr[0]
-  );
-  $data_json = json_encode($data);
-  header('Content-type:text/json');
-  echo $data_json;
-  exit;
-}elseif($arr[0]==200){
-  $data = array(
-    'code' => '200',
-    'shorturl'=> $arr[1],
-    'qrcode' => qrcode($arr[1])
-  );
-  $data_json = json_encode($data);
-  header('Content-type:text/json');
-  echo $data_json;
-  exit;
-}
-}
-?>
+header('Content-type:text/json');
+echo json_encode($data);
+exit;
