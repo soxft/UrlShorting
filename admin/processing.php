@@ -1,6 +1,8 @@
 <?php
 require_once('header.php');
-require_once('../app/time.php');
+
+$time = time();
+
 $type = $_GET['type'];
 $shorturl = $_GET['shorturl'];
 $ip = $_GET['ip'];

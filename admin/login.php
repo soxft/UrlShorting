@@ -2,7 +2,7 @@
 require_once('../config.php');
 //包括上一个文件夹的config.php
 session_start();
-//开启session
+define('CLIENT_ID','8us3lhiuyiOlyT3KitpWvtIwGindm5');
 if(isset($_POST['passwd']))
 {
   if($_POST['passwd'] == $passwd)
@@ -47,6 +47,10 @@ if(isset($_POST['passwd']))
               <br />
               <center>
                   <button class="mdui-btn mdui-btn-raised mdui-ripple" id="btn" onclick="login()">登陆</button>
+                  <?php if(!empty(mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM config where type='xoauth'"))['content'])){ ?>
+                  <div style='height:10px'></div>
+                  <button class="mdui-btn mdui-btn-raised mdui-ripple" onclick="window.location.href='<?php echo "http://oauth.xsot.cn/oauth.php?response_type=code&client_id=". CLIENT_ID ."&redirect_uri=".$url."app/oauth.php" ?>'">第三方登录</button>
+                  <?php } ?>
               </center>
       </div>
     </div>

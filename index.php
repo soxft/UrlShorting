@@ -16,7 +16,7 @@ if ($status == "undefind" || empty($status)) {
     exit();
 }
 if ($status == "passmessage") {
-    //如果数据库type读取为密语
+    //如果数据库type读取为密语 
 ?>
       <br />
       <div class="mdui-card.mdui-card-media-covered-transparent">
@@ -45,8 +45,8 @@ if ($status == "passmessage") {
     }
     //至此显示密语结束
     //因为为了解决速度问题，所以url的跳转放置显示css直之前，即header.php开头部分  
-    unset($_SESSION['shorturl']);
-    unset($_SESSION['passwd']); //删除上一次的短域session
+    unset($_SESSION['shorturl']);  //删除shorturl的session submit里面跳转到shorturl.php的那个session
+    //unset($_SESSION['passwd']); //删除上一次的短域session
 ?>
 <br/>
 <div class="mdui-container doc-container">

@@ -5,12 +5,12 @@
     Author : XCSOFT 
     提供session实现
 */
-session_start(); 
+  session_start(); 
   if(isset($_POST['passwd']))
   {
       if($_POST['passwd'] == $_SESSION['passwd'])
       {
-          $_SESSION['passwdthrough'] =TRUE;
+          $_SESSION[''.$_POST['id'].''] = 'SET';
           echo 200;
           exit();
       }else{
@@ -67,9 +67,10 @@ session_start();
 	    $.ajax({
 	       method: 'post',
 	       url: 'app/passwd.php',
-	       timeout: 100000,
+	       timeout: 100000, 
 	       data: {
-	           passwd: passwd
+	           passwd: passwd,
+	           id: '<?php echo $id ?>'
 	       },
 	       success: function(data)
 	       {
