@@ -6,55 +6,54 @@ if (!file_exists("install.lock")) {
 //检测是否已经安装
 require_once "header.php";
 require_once "config.php";
-require_once "app/delete.php";
-if (date("i")%20 == 0) {
-    del("./qrcode/");
-}
-//清除二维码缓存
 //开始判断处理
 if ($status == "undefind" || empty($status)) {
-    echo("<br / ><center><br / ><img src=\"https://3gimg.qq.com/tele_safe/safeurl/img/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
-    echo('<center><h2>你访问的页面不存在!</h2></center>');
+?>
+  <br/><center><br/><img src="https://3gimg.qq.com/tele_safe/safeurl/img/notice.png" widht="85"  height="85" alt="错误"></center>
+  <center><h2>你访问的页面不存在!</h2></center>
+<?php
     require_once "footer.php";
     exit();
 }
 if ($status == "passmessage") {
-    //如果数据库type读取为密语
-    echo "
+    //如果数据库type读取为密语 
+?>
       <br />
-      <div class=\"mdui-card.mdui-card-media-covered-transparent\">
-        <div class=\"mdui-card-primary\">
-          <div class=\"mdui-card-primary-subtitle\">$timemessage</div>
+      <div class="mdui-card.mdui-card-media-covered-transparent">
+        <div class="mdui-card-primary">
+          <div class="mdui-card-primary-subtitle"><?php echo $timemessage?></div>
             <center>
-              <div class=\"mdui-card-primary-title\" style=\"word-break:break-all;\">
-                「" . htmlspecialchars($information) . "」
+              <div class="mdui-card-primary-title" style="word-break:break-all;">
+                「<?php echo htmlspecialchars($information)?>」
               </div>
             </center>
           </div>
         </div>
       </div>
     <br/>
-    <div class=\"mdui-card.mdui-card-media-covered-transparent\">
+    <div class="mdui-card.mdui-card-media-covered-transparent">
     <br />
     <h4>&emsp;&emsp;Q:这是什么?</h4>
     <h5>&emsp;&emsp;A:这是别人发给你的一条密语!</h5><br/>
     <h4>&emsp;&emsp;Q:我也想写密语怎么办?</h4>
-    <h5>&emsp;&emsp;A:访问<a class=\"mdui-text-color-grey-800\" href=\"$url\">$url</a>平台你可以免费进行密语缩短</h5>
+    <h5>&emsp;&emsp;A:访问<a class="mdui-text-color-grey-800" href="<?php echo $url?>"><?php echo $url?></a>平台你可以免费进行密语缩短</h5>
     <br />
     </div>
-      ";
+<?php
       require_once "footer.php";
       exit();
     }
     //至此显示密语结束
     //因为为了解决速度问题，所以url的跳转放置显示css直之前，即header.php开头部分  
+    unset($_SESSION['shorturl']);  //删除shorturl的session submit里面跳转到shorturl.php的那个session
+    //unset($_SESSION['passwd']); //删除上一次的短域session
 ?>
 <br/>
 <div class="mdui-container doc-container">
     <div class="mdui-typo">
         <h2>短域</h2>
         <div class="mdui-textfield">
-            <input id="content" class="mdui-textfield-input" type="text" placeholder="*请输入长链接或密语"/>
+            <textarea id="content" class="mdui-textfield-input" type="text" placeholder="*请输入长链接或密语"></textarea>
         </div>
         <div style="float: left; width: 49.2%;" class="mdui-textfield">
             <input id="shorturl" class="mdui-textfield-input" type="text" placeholder="请输入自定义短链(可选)"/>
@@ -67,18 +66,31 @@ if ($status == "passmessage") {
           <i class="mdui-icon material-icons">send</i>
         </button>
         <label class="mdui-radio">
-          <input type="radio" name="type" id="type"  value="shorturl" checked />
+          <input onclick='change("shorturl")' type="radio" name="type" id="type"  value="shorturl" checked />
           <i class="mdui-radio-icon"></i>短域
         </label>
         &emsp;&emsp;
         <label class="mdui-radio">
-          <input type="radio" name="type" id="type"  value="passmessage" />
+          <input onclick='change("passmessage")' type="radio" name="type" id="type"  value="passmessage" />
           <i class="mdui-radio-icon"></i>密语
         </label>
     </div>
 </div>
 <script>
 var $ = mdui.JQ;
+
+function change(type)
+{
+  if(type == 'shorturl')
+  {
+    $('#content').removeAttr('rows');
+    $('#content').removeAttr('cols');
+  }else{
+    $('#content').attr('rows','10');
+    $('#content').attr('cols','10');
+  }
+}
+
 function submit(){
   type = $('input[name="type"]:checked').val();
   content = $('#content').val();

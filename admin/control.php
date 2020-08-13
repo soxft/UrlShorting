@@ -67,7 +67,7 @@
         <td>$row->type</td>
         <td>$row->ip</td>
         <td>$row->passwd</td>
-        <td>$row->time</td>
+        <td>".date("Y-m-d H:i:s",$row->time)."</td>
         <td>$check</td>
         <td>$check2</td>
         <td>

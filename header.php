@@ -56,9 +56,8 @@ if (empty($id)) {
         exit();
     }
     $_SESSION['passwd'] = $shorturlPasswd;
-    //var_dump($_SESSION['passwdthrough']);
-    if(!empty($shorturlPasswd) && !$_SESSION['passwdthrough']){
-        //加密
+    if(!empty($shorturlPasswd) && !isset($_SESSION[''.$id.''])){
+        //加密  //方案2 讲session的值改为shorturl
         require_once "app/passwd.php";
         exit();
     }

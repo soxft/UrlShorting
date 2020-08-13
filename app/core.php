@@ -3,13 +3,16 @@
   网址缩短核心服务
   Powered by xcsoft
   版权所有,盗版必究
-  时间2020/07/21
-  Version:1.9.1
+  时间2020/07/31
+  Version:2.0.1
 */
 require_once "config.php";
-require_once "app/time.php";
 require_once "app/strpol.php";
 require_once "app/ip.php";
+/*
+*  @author   xcsoft
+*  @version  2.0.1
+*/
 function Urlshorting($content, $type, $passwd, $shorturlInput) {
     global $ip;
     //ip
@@ -21,8 +24,8 @@ function Urlshorting($content, $type, $passwd, $shorturlInput) {
     //短网址长度 
     global $url; 
     //网址域名
-    global $time;
-    //时间
+    $time = time();
+    
     @$arr = mysqli_fetch_assoc(mysqli_query($conn, "SELECT *FROM `ban` where `content`='$ip'"));
     if (!empty($arr)) {
         //检索用户ip或短域是否被封禁

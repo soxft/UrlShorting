@@ -6,7 +6,7 @@ if(!isset($_SESSION['shorturl']))
  exit();
 }
 require_once "header.php";
-require_once "app/qrcode.php";
+//require_once "app/qrcode.php";
 $shorturl = $_SESSION['shorturl'];
 $urlpasswd = $_SESSION['passwd'];
 if(empty($urlpasswd)){
@@ -20,7 +20,7 @@ if(empty($urlpasswd)){
         <h2>缩短成功!</h2>
         <center>
           <br />
-          <?php qrcode($shorturl,"show"); ?>
+          <div id="qrcode"></div>
           <h3>短链接:<div class="URL" id="URL" data-clipboard-text="<?PHP echo $text; ?>"><?PHP echo($shorturl); ?><?php if(!empty($urlpasswd)):?><br/>密码: <?php echo $_SESSION['passwd'] ?>
           <?php endif ?></h3></div>
         </center>
@@ -33,18 +33,26 @@ if(empty($urlpasswd)){
 </style>
 <script src="https://cdn.jsdelivr.net/gh/soxft/cdn@master/jquery/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/soxft/cdn@1.9/urlshorting/clipboard.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/soxft/cdn@2.7/jquery/jquery-qrcode/jquery.qrcode.min.js"></script>
 <script>
-    new ClipboardJS(".URL");
-    $(".URL").click(function() {
-        mdui.snackbar({
-        message: "链接已复制"
+    $('#qrcode').qrcode
+    ({
+      width: 150,
+      height: 150,
+      render: "table",
+      correctLevel:0,
+      text: '<?php echo $shorturl ?>'
     });
-    }) 
+
+  new ClipboardJS(".URL");
+  $(".URL").click(function() {
+    mdui.snackbar({
+      message: "链接已复制"
+    });
+  }) 
 </script>
 
 
 <?php
-unset($_SESSION['shorturl']);
-unset($_SESSION['passwd']);
 require_once "footer.php";
 ?>
