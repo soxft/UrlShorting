@@ -4,6 +4,7 @@
 */
   require_once "../config.php";
   define('CLIENT_ID','8us3lhiuyiOlyT3KitpWvtIwGindm5');
+  define('CLIENT_SECRET','8us3lhiuyiOlyT3KitpWvtIwGindm5');
   session_start();
   $code = $_GET['code'];
   if(empty($code))
@@ -12,11 +13,11 @@
     header("Refresh:2;URL='../admin/login.php'");
   }
   
-  $arr = json_decode(file_get_contents('https://oauth.xsot.cn/api/token.php?code='. $code . "&client_id=".CLIENT_ID),true);
+  $arr = json_decode(file_get_contents('https://oauth.xsot.cn/api/token.php?code='. $code . "&client_id=".CLIENT_ID."&client_secret=".CLIENT_SECRET),true);
 
   if($arr['code'] == '200')
   {
-    $url = 'https://oauth.xsot.cn/api/resourse.php?access_token=' . $arr['access_token'];
+    $url = 'https://oauth.xsot.cn/api/resourse.php?access_token=' . $arr['access_token'].'&client_secret='.CLIENT_SECRET;
     $return = json_decode(file_get_contents($url),true);
     $username = $return['username']; 
     $arr = explode(",",mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM `config` WHERE type='xoauth'"))['content']);
