@@ -1,5 +1,6 @@
 <?php 
 define('CLIENT_ID','8us3lhiuyiOlyT3KitpWvtIwGindm5');
+define('CLIENT_SECRET','8us3lhiuyiOlyT3KitpWvtIwGindm5');
 if(empty($_GET['code'])){
   require_once "header.php"; 
   $arr = explode(",",mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM `config` WHERE type='xoauth'"))['content']);
@@ -45,7 +46,7 @@ if(empty($_GET['code'])){
     </ul>
   </div>
   <div class="mdui-container">
-  <h2 style="font-weight:400">授权用户</h2>
+  <h2 style="font-weight:400">第三方登录</h2>
   <p style='color:grey;font-size:15px;'>第三方授权登陆列表,使用星辰oauth</p>
     <ul class="mdui-list">
     <?php echo $list ?>
@@ -117,11 +118,13 @@ if(empty($_GET['code'])){
   require_once "../config.php";
   //如果处于添加模式(code不为空)
   $code = $_GET['code'];
-  $arr = json_decode(file_get_contents('https://oauth.xsot.cn/api/token.php?code='. $code . "&client_id=".CLIENT_ID),true);
-
+  $url = 'https://oauth.xsot.cn/api/token.php?code='. $code . "&client_id=".CLIENT_ID.'&client_secret='.CLIENT_SECRET;
+  //echo $url;
+  $arr = json_decode(file_get_contents($url),true);
+    //print_r($arr);
   if($arr['code'] == '200')
   {
-    $url = 'https://oauth.xsot.cn/api/resourse.php?access_token=' . $arr['access_token'];
+    $url = 'https://oauth.xsot.cn/api/resourse.php?access_token=' . $arr['access_token'].'&client_secret='.CLIENT_SECRET;
     $return = json_decode(file_get_contents($url),true);
     $username = $return['username']; 
     $arr = explode(",",mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM `config` WHERE type='xoauth'"))['content']);
