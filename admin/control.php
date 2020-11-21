@@ -60,10 +60,11 @@
         } else {
             $check2 = "BAN";
         }    //判断是否已经被ban
+        $information = mb_strlen($row->information) >= 20 ? mb_substr($row->information,0,20) : $row->information;
             echo "
       <tr>
         <td>$row->shorturl</td>
-        <td>$row->information</td>
+        <td>$information</td>
         <td>$row->type</td>
         <td>$row->ip</td>
         <td>$row->passwd</td>

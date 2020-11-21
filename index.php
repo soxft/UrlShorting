@@ -21,7 +21,7 @@ if ($status == "passmessage") {
       <br />
       <div class="mdui-card.mdui-card-media-covered-transparent">
         <div class="mdui-card-primary">
-          <div class="mdui-card-primary-subtitle"><?php echo $timemessage?></div>
+          <div class="mdui-card-primary-subtitle"><?php echo date('Y年m月d日 H时i分s秒',$timemessage) ?></div>
             <center>
               <div class="mdui-card-primary-title" style="word-break:break-all;">
                 「<?php echo htmlspecialchars($information)?>」
@@ -31,14 +31,6 @@ if ($status == "passmessage") {
         </div>
       </div>
     <br/>
-    <div class="mdui-card.mdui-card-media-covered-transparent">
-    <br />
-    <h4>&emsp;&emsp;Q:这是什么?</h4>
-    <h5>&emsp;&emsp;A:这是别人发给你的一条密语!</h5><br/>
-    <h4>&emsp;&emsp;Q:我也想写密语怎么办?</h4>
-    <h5>&emsp;&emsp;A:访问<a class="mdui-text-color-grey-800" href="<?php echo $url?>"><?php echo $url?></a>平台你可以免费进行密语缩短</h5>
-    <br />
-    </div>
 <?php
       require_once "footer.php";
       exit();

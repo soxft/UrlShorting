@@ -49,7 +49,7 @@ if(isset($_POST['passwd']))
                   <button class="mdui-btn mdui-btn-raised mdui-ripple" id="btn" onclick="login()">登陆</button>
                   <?php if(!empty(mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM config where type='xoauth'"))['content'])){ ?>
                   <div style='height:10px'></div>
-                  <button class="mdui-btn mdui-btn-raised mdui-ripple" onclick="window.location.href='<?php echo "http://oauth.xsot.cn/oauth.php?response_type=code&client_id=". CLIENT_ID ."&redirect_uri=".$url."app/oauth.php" ?>'">第三方登录</button>
+                  <button class="mdui-btn mdui-btn-raised mdui-ripple" onclick="window.location.href='<?php echo "http://openid.9420.ltd/v1/oauth.php?response_type=code&client_id=". CLIENT_ID ."&redirect_uri=".$url."app/oauth.php" ?>'">第三方登录</button>
                   <?php } ?>
               </center>
       </div>

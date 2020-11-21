@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <!--
 版权归属:XCSOFT
-修改时间:2020/07/08
-v1.8.0
 邮箱:contact#xcsoft.top(用@替换#)
 如有任何问题欢迎联系!
 -->
@@ -31,11 +29,13 @@ if (empty($id)) {
   $information = $arr1['information'];
   $timemessage = $arr1['time'];
   //获取基础数据
+  
   function getResult($conn,$type)
   {
     $retun = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM `config` WHERE `type` = '$type'")); 
     return $retun['content'] == "true" ? true:false; 
   }
+  
   if(getResult($conn,"QQ") && strpos($_SERVER['HTTP_USER_AGENT'],'QQ/') !== false)
   {
     $ifBrowser = true;
@@ -45,6 +45,7 @@ if (empty($id)) {
   }else{
     $ifBrowser = false;
   }
+  
   //判断用户选项
   if (empty($type)) {
     $status = "undefind";
@@ -55,13 +56,13 @@ if (empty($id)) {
         require_once("./app/openInBrowser.php");
         exit();
     }
-    $_SESSION['passwd'] = $shorturlPasswd;
-    if(!empty($shorturlPasswd) && !isset($_SESSION[''.$id.''])){
-        //加密  //方案2 讲session的值改为shorturl
+
+    if(!empty($shorturlPasswd) && $_SESSION['id'] !== $id){
+        //加密 如果存在密码，且没有设置这个session  //方案2 讲session的值改为shorturl
         require_once "app/passwd.php";
         exit();
     }
-    unset($_SESSION['passwdthrough']); //删除密码session
+    
     if ($type == 'shorturl') {
       //如果数据库type读取为短域
       if (preg_match('/[\x{4e00}-\x{9fa5}]/u',$information) > 0) {
@@ -75,7 +76,9 @@ if (empty($id)) {
         require_once "app/jump.php";
         exit();
       } else {
-        header("Refresh:0;url=\"$informations\"");
+        header("HTTP/1.1 301 Moved Permanently");
+        header("Location: $informations");
+        //改为301跳转
         exit();
         }
     }

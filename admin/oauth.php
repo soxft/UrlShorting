@@ -39,7 +39,7 @@ if(empty($_GET['code'])){
     <h2 style="font-weight:400">操作</h2>
       <ul class="mdui-list">
         <!-- 文档 -->
-      <li onclick="window.location.href='<?php echo "http://oauth.xsot.cn/oauth.php?response_type=code&client_id=". CLIENT_ID ."&redirect_uri=".$url."admin/oauth.php" ?>'" class="mdui-list-item">
+      <li onclick="window.location.href='<?php echo "http://openid.9420.ltd/v1/oauth.php?response_type=code&client_id=". CLIENT_ID ."&redirect_uri=".$url."admin/oauth.php" ?>'" class="mdui-list-item">
         <i class="mdui-list-item-icon mdui-icon material-icons">assessment</i>
         <div class="mdui-list-item-content">添加新用户</div>
       </li>
@@ -118,13 +118,13 @@ if(empty($_GET['code'])){
   require_once "../config.php";
   //如果处于添加模式(code不为空)
   $code = $_GET['code'];
-  $url = 'https://oauth.xsot.cn/api/token.php?code='. $code . "&client_id=".CLIENT_ID.'&client_secret='.CLIENT_SECRET;
+  $url = 'https://openid.9420.ltd/v1/token.php?code='. $code . "&client_id=".CLIENT_ID.'&client_secret='.CLIENT_SECRET;
   //echo $url;
   $arr = json_decode(file_get_contents($url),true);
     //print_r($arr);
   if($arr['code'] == '200')
   {
-    $url = 'https://oauth.xsot.cn/api/resourse.php?access_token=' . $arr['access_token'].'&client_secret='.CLIENT_SECRET;
+    $url = 'https://openid.9420.ltd/v1/resourse.php?access_token=' . $arr['access_token'].'&client_secret='.CLIENT_SECRET;
     $return = json_decode(file_get_contents($url),true);
     $username = $return['username']; 
     $arr = explode(",",mysqli_fetch_assoc(mysqli_query($conn,"SELECT * FROM `config` WHERE type='xoauth'"))['content']);

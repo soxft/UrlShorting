@@ -10,7 +10,7 @@
   {
       if($_POST['passwd'] == $_SESSION['passwd'])
       {
-          $_SESSION[''.$_POST['id'].''] = 'SET';
+          $_SESSION['id'] = $_POST['id'];
           echo 200;
           exit();
       }else{
