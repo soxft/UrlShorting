@@ -8,7 +8,7 @@
   session_start(); 
   if(isset($_POST['passwd']))
   {
-      if($_POST['passwd'] == $_SESSION['passwd'])
+      if($_POST['passwd'] == $_SESSION['shorturl_passwd'])
       {
           $_SESSION['id'] = $_POST['id'];
           echo 200;
