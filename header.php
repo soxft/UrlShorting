@@ -59,6 +59,7 @@ if (empty($id)) {
 
     if(!empty($shorturlPasswd) && $_SESSION['id'] !== $id){
         //加密 如果存在密码，且没有设置这个session  //方案2 讲session的值改为shorturl
+        $_SESSION['shorturl_passwd'] = $shorturlPasswd;
         require_once "app/passwd.php";
         exit();
     }
