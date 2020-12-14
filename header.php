@@ -9,6 +9,11 @@ session_start();
 require_once "config.php";
 require_once "app/code.php";    
 $id = $_GET['id'];
+if(!preg_match("/^[a-z0-9\#]*$/",$id))
+{
+  exit();
+  //判断id是否为纯英文数字，防止注入
+}
 //获取id
 if (empty($id)) {
   $status = "ok";
