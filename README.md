@@ -35,7 +35,7 @@ Apache:
 
 
 IIS请尝试自己转换.
-示例：
+<p>示例：</p>
 
     if (!-e $request_filename) {
     rewrite ^/(.*)$ /index.php?id=$1 last;
@@ -47,8 +47,8 @@ IIS请尝试自己转换.
 
 ## 版权
 xcsoft版权所有 改源码依据apache2开源协议开源,请不要修改版权信息！
-  Secondary Developed By k6o.top
-  Contact us: Gary@dtnetwork.top
+  <p>Secondary Developed By k6o.top</p>
+  <p;>Contact us: Gary@dtnetwork.top</p>
 
 ## 更新
 v2.2.0更新
