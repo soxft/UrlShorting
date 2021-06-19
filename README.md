@@ -35,16 +35,15 @@ Apache:
     </IfModule>
 
 
-IIS请尝试自己转换.
-<p>示例：</p>
-
-    if (!-e $request_filename) {
-    rewrite ^/(.*)$ /index.php?id=$1 last;
-    }
+IIS (仅供参考,未进行测试):
+  <rule name="tool.apizl.com rewriteTools1" patternSyntax="ECMAScript" stopProcessing="true">
+    <match url="^/(.*)" ignoreCase="false" />
+    <conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
+    <action type="Rewrite" url="/index.php?id={R:1}" appendQueryString="false" />
+  </rule>
 
 
 <br/>5.访问网站进行确认.
-
 
 ## 版权
 xcsoft版权所有 改源码依据apache2开源协议开源,请不要修改版权信息！
