@@ -10,7 +10,7 @@
 ## 简介
 
 一个url网址缩短平台.
-demo：<a herf="https://www.k6o.top/">k6o短链接</a>
+demo：[K6o短链接](https://s.k6o.top/)
 
 ## 安装方法
 1.下载源码.<br/>
