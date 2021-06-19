@@ -48,12 +48,12 @@ IIS请尝试自己转换.
 ## 版权
 xcsoft版权所有 改源码依据apache2开源协议开源,请不要修改版权信息！
   <p>Secondary Developed By k6o.top</p>
-  <p;>Contact us: Gary@dtnetwork.top</p>
+  <p>Contact us: Gary@dtnetwork.top</p>
 
 ## 更新
 v2.2.0更新
 <br/>此次更新由k6o短链接提供
-  email: Gary@dtnetwork.top
+  <p>email: Gary@dtnetwork.top</p>
 <br/>1.修复oauth登录跳转地址
 <br/>2.主页，提示语增加emoji表情
 <br/>3.增加页脚Myssl安全签章，无需手动设置跳转链接
