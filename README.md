@@ -20,27 +20,30 @@ demo：[K6o短链接](https://s.k6o.top/)
 4.修改网站伪静态配置:<br/>
 
 Nginx:  
-
+```
     if (!-e $request_filename) {
     rewrite ^/(.*)$ /index.php?id=$1 last;
     }
+```
 
 Apache:
-
+```
     <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)$ /index.php?id=$1 [L]
     </IfModule>
-
+```
 
 IIS (仅供参考,未进行测试):
+```
   <rule name="tool.apizl.com rewriteTools1" patternSyntax="ECMAScript" stopProcessing="true">
     <match url="^/(.*)" ignoreCase="false" />
     <conditions logicalGrouping="MatchAll" trackAllCaptures="false" />
     <action type="Rewrite" url="/index.php?id={R:1}" appendQueryString="false" />
   </rule>
+```
 
 
 <br/>5.访问网站进行确认.
