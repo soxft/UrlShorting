@@ -1,5 +1,5 @@
 <?php require_once("./header.php");?>
-<title>偏好设置 - 星辰短域|密语</title>
+<title>偏好设置</title>
 <div class="mdui-container">
   <div class="mdui-typo">
     <h2 class="doc-chapter-title doc-chapter-title-first">偏好设置</h2>

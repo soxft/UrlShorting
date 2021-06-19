@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>短域管理 - 星辰短域|密语</title>
+    <title>短域管理</title>
     <?php
     require_once("./header.php");
     $p = $_GET['p'];

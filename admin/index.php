@@ -1,5 +1,5 @@
 <?php require_once "header.php"; ?>
-<title>首页 - 星辰短域|密语</title>
+<title>首页</title>
 <div style="Height:20px"></div>
 <div class="mdui-container">
   <h2 style="font-weight:400">官方信息</h2>

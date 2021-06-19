@@ -17,12 +17,14 @@ if(empty($urlpasswd)){
 ?>
 <div class="mdui-container doc-container">
     <div class="mdui-typo">
-        <h2>缩短成功!</h2>
+        <h2>缩短成功!🎉</h2>
         <center>
           <br />
           <div id="qrcode"></div>
-          <h3>短链接:<div class="URL" id="URL" data-clipboard-text="<?PHP echo $text; ?>"><?PHP echo($shorturl); ?><?php if(!empty($urlpasswd)):?><br/>密码: <?php echo $_SESSION['passwd'] ?>
-          <?php endif ?></h3></div>
+          <h3>短链接（点击链接即可复制）:<div class="URL" id="URL" data-clipboard-text="<?PHP echo $text; ?>"><?PHP echo($shorturl); ?><?php if(!empty($urlpasswd)):?><br/>密码: <?php echo $_SESSION['passwd'] ?>
+          <?php endif ?>
+          </h3>
+          </div>
         </center>
     </div>
 </div>
@@ -47,7 +49,7 @@ if(empty($urlpasswd)){
   new ClipboardJS(".URL");
   $(".URL").click(function() {
     mdui.snackbar({
-      message: "链接已复制"
+      message: "链接已复制✔️"
     });
   }) 
 </script>

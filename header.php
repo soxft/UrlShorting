@@ -4,6 +4,10 @@
 邮箱:contact#xcsoft.top(用@替换#)
 如有任何问题欢迎联系!
 -->
+<!--
+  Secondary Developed By k6o.top
+  Contact us: Gary@dtnetwork.top
+-->
 <?php
 session_start();
 require_once "config.php";
@@ -123,7 +127,7 @@ if (empty($id)) {
       <span class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: '#main-drawer'}">
         <i class="mdui-icon material-icons">menu</i>
       </span>
-      <a href="" class="mdui-typo-title">Urlshorting</a>
+      <a href="" class="mdui-typo-title">K6o短链接</a>
     </header>
     <div class="mdui-drawer" id="main-drawer">
       <div class="mdui-list" mdui-collapse="{accordion: true}" style="margin-bottom: 68px;">
@@ -136,15 +140,11 @@ if (empty($id)) {
           <i class="mdui-list-item-icon mdui-icon material-icons">help_outline</i>
           &emsp;帮助
         </a>
-          <a href="./admin" class="mdui-list-item">
+          <!-- <a href="./admin" class="mdui-list-item">
             <i class="mdui-list-item-icon mdui-icon material-icons">person_outline</i>
             &emsp;后台
-          </a>
+          </a> -->
         </div>
-        <a href="./about.php" class="mdui-list-item">
-          <i class="mdui-list-item-icon mdui-icon material-icons">info_outline</i>
-          &emsp;关于
-        </a>
         <div class="mdui-collapse-item ">
           <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
             <i class="mdui-list-item-icon mdui-icon material-icons">&#xe80d;</i>
@@ -152,10 +152,7 @@ if (empty($id)) {
             <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
           </div>
           <div class="mdui-collapse-item-body mdui-list">
-            <a href="//blog.xsot.cn" class="mdui-list-item mdui-ripple ">星辰日记</a>
-          </div>
-          <div class="mdui-collapse-item-body mdui-list">
-            <a href="//love.xsot.cn" class="mdui-list-item mdui-ripple ">星辰表白墙</a>
+            <a href="https://blog.dtnetwork.top/" class="mdui-list-item mdui-ripple ">💻鼎天网络博客</a>
           </div>
         </div>
       </div>

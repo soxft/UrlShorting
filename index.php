@@ -10,7 +10,7 @@ require_once "config.php";
 if ($status == "undefind" || empty($status)) {
 ?>
   <br/><center><br/><img src="https://3gimg.qq.com/tele_safe/safeurl/img/notice.png" widht="85"  height="85" alt="错误"></center>
-  <center><h2>你访问的页面不存在!</h2></center>
+  <center><h2>❌你访问的页面不存在!</h2></center>
 <?php
     require_once "footer.php";
     exit();
@@ -105,14 +105,14 @@ function submit(){
       if(data == 200)
       {
         mdui.snackbar({
-         message: '缩短成功!',
+         message: '✔️缩短成功!',
          position: 'right-top',
          timeout: 0
        });
        window.setTimeout("window.location='shorturl.php'",2000);
       }else{
         mdui.snackbar({
-         message: '缩短失败: <br/>提示信息: ' + data,
+         message: '❌缩短失败: <br/>提示信息: ' + data,
          position: 'right-top'
        });
       }
@@ -124,7 +124,7 @@ function submit(){
       if(textStatus == 'timeout')
       {
         mdui.snackbar({
-         message: '请求超时!',
+         message: '❌请求超时!',
          position: 'right-top'
        });
       }

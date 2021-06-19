@@ -60,3 +60,4 @@ if (empty($domain) && empty($passmessage)) {
 header('Content-type:text/json');
 echo json_encode($data);
 exit;
+

@@ -4,6 +4,10 @@
 邮箱:contact#xcsoft.top(用@替换#)
 如有任何问题欢迎联系!
 -->
+<!--
+  Secondary Developed By k6o.top
+  Contact us: Gary@dtnetwork.top
+-->
 <?php
 require_once('../config.php');
 //包括上一个文件夹的config.php
@@ -40,7 +44,9 @@ $password = $_SESSION['password'];
         <a href="./control.php" class="mdui-ripple">短域管理</a>
         <a href="./preferences.php" class="mdui-ripple">偏好设置</a>
         <a href="./oauth.php" class="mdui-ripple">第三方登录</a>
-        <a href="./update.php" class="mdui-ripple">检查更新</a>
+    <!-- <a href="./update.php" class="mdui-ripple">检查更新</a> -->
         <a href="./logout.php" class="mdui-ripple">退出登录</a>
         <a href="../index.php" class="mdui-ripple">返回前台</a>
     </div>
+    
+   

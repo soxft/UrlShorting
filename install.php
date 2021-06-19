@@ -1,11 +1,11 @@
-<title>星辰安装系统</title>
+<title>短链接安装系统</title>
 <body background="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/soxft/cdn@master/mdui/css/mdui.min.css">
   <script src="https://cdn.jsdelivr.net/gh/soxft/cdn@master/mdui/js/mdui.min.js"></script>
   <br />
-  <center><h2>星辰网站安装系统</h2></center>
+  <center><h2>短链接安装系统</h2></center>
   <?php
   $lockfile = "install.lock";
   if (file_exists($lockfile)) {

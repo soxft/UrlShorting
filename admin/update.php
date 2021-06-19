@@ -1,5 +1,5 @@
 <head>
-    <title>检查更新 - 星辰短域|密语</title>
+    <title>检查更新</title>
     <?php require_once "header.php"  ?>
 </head>
 <body>
