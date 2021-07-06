@@ -94,7 +94,7 @@
           {
             if(textStatus !== 'success'){
               mdui.snackbar({
-                message: '发时未知错误,请稍后再试.',
+                message: '发现未知错误,请稍后再试.',
                 position: 'right-top'
               });
             }
