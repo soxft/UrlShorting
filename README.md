@@ -7,6 +7,9 @@
 <a href="https://github.com/soxft/URLshorting/network/members"> 
 <img src="https://img.shields.io/github/forks/soxft/URLshorting.svg" alt="GitHub forks"></a> 
 
+##English version(BETA)
+https://github.com/essesoul/UrlShorting-en
+
 ## 简介
 
 一个url网址缩短平台.
@@ -54,15 +57,7 @@ xcsoft版权所有 改源码依据apache2开源协议开源,请不要修改版�
   <p>Contact us: Gary@dtnetwork.top</p>
 
 ## 更新
-v2.2.0更新
+v2.2.1更新
 <br/>此次更新由k6o短链接提供
   <p>email: Gary@dtnetwork.top</p>
-<br/>1.修复oauth登录跳转地址
-<br/>2.主页，提示语增加emoji表情
-<br/>3.感觉管理菜单里的自动更新不实用，先注释掉了，有需要可以自行恢复
-<br/>4.优化了标签栏显示
-<br/>5.短链接生成后增加点击复制提示
-<br/>6.增加了建站日期显示，请自行到footer.php修改建站日期
-<br/>7.增加页脚返回主页的按钮，方便移动端使用
-
-计划在以后的更新中加入谷歌验证码和统计代码配置页面，可能还会加入主页音频和公告栏。
+<br/>增加英文翻译
