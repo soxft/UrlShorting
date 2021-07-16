@@ -52,7 +52,7 @@ IIS (仅供参考,未进行测试):
 <br/>5.访问网站进行确认.
 
 ## 版权
-xcsoft版权所有 改源码依据apache2开源协议开源,请不要修改版权信息！
+xcsoft版权所有 该源码依据apache2开源协议开源,请不要修改版权信息！
   <p>Secondary Developed By k6o.top</p>
   <p>Contact us: Gary@dtnetwork.top</p>
 
