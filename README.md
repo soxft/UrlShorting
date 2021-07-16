@@ -7,7 +7,7 @@
 <a href="https://github.com/soxft/URLshorting/network/members"> 
 <img src="https://img.shields.io/github/forks/soxft/URLshorting.svg" alt="GitHub forks"></a> 
 
-##English version(BETA)
+## English version(BETA)
 https://github.com/essesoul/UrlShorting-en
 
 ## 简介
