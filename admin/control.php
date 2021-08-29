@@ -2,6 +2,7 @@
 <head>
     <title>短域管理</title>
     <?php
+    $Yourdomain = $_SERVER['HTTP_HOST'];
     require_once("./header.php");
     $p = $_GET['p'];
     if(empty($p) || $p < "1")
@@ -72,7 +73,8 @@
         <td>$check</td>
         <td>$check2</td>
         <td>
-          <a href=\"./processing.php?shorturl=$row->shorturl&&type=del\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">删除</a>";
+           <a href=https://$Yourdomain/$row->shorturl class=\"mdui-btn mdui-btn-raised mdui-ripple\" target=“_blank”>访问</a>
+           <a href=\"./processing.php?shorturl=$row->shorturl&&type=del\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">删除</a>";
 if($check=="正常"){
   echo "<a href=\"./processing.php?shorturl=$row->shorturl&&type=domain\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">封短域</a>";
 }else{
