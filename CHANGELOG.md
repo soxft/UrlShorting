@@ -4,7 +4,7 @@ v2.2.1更新
   <p>1.管理页面添加访问按钮，方便预览,如图</p>
   <p>
   
-  ![image](https://user-images.githubusercontent.com/58624474/131244679-3b1f20a4-25e6-4718-a7ff-8c63fb0eaf9f.png)
+ ![image](https://user-images.githubusercontent.com/58624474/131244704-4b9be5f7-b048-4d57-bd2f-772319a73bad.png)
 
   </p>
 
