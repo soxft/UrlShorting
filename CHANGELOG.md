@@ -1,8 +1,12 @@
 v2.2.1更新
 <br/>此次更新由k6o短链接提供
   <p>email: Gary@dtnetwork.top</p>
-  <p>1.管理页面添加访问按钮，方便预览,如图![image](https://user-images.githubusercontent.com/58624474/131244679-3b1f20a4-25e6-4718-a7ff-8c63fb0eaf9f.png)
-</p>
+  <p>1.管理页面添加访问按钮，方便预览,如图</p>
+  <p>
+  
+  ![image](https://user-images.githubusercontent.com/58624474/131244679-3b1f20a4-25e6-4718-a7ff-8c63fb0eaf9f.png)
+
+  </p>
 
 
 v2.2.0更新
