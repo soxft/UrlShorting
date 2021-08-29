@@ -37,6 +37,7 @@
                                 <th>时间</th>
                                 <th>短域状态</th>
                                 <th>IP状态</th>
+                                <th></th>
                                 <th>管理</th>
                             </tr>";
 // 表格开头
@@ -72,9 +73,9 @@
         <td>".date("Y-m-d H:i:s",$row->time)."</td>
         <td>$check</td>
         <td>$check2</td>
+        <td><a href=https://$Yourdomain/$row->shorturl class=\"mdui-btn mdui-btn-raised mdui-ripple\" target=“_blank”>访问</a></td>
         <td>
-           <a href=https://$Yourdomain/$row->shorturl class=\"mdui-btn mdui-btn-raised mdui-ripple\" target=“_blank”>访问</a>
-           <a href=\"./processing.php?shorturl=$row->shorturl&&type=del\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">删除</a>";
+            <a href=\"./processing.php?shorturl=$row->shorturl&&type=del\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">删除</a>";
 if($check=="正常"){
   echo "<a href=\"./processing.php?shorturl=$row->shorturl&&type=domain\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">封短域</a>";
 }else{
@@ -84,7 +85,8 @@ if($check2=="正常"){
   echo "<a href=\"./processing.php?ip=$row->ip&&type=ip\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">封ip</a>";
 }else{
   echo "<a href=\"./processing.php?content=$row->ip&&type=cancel&&from=control\" class=\"mdui-btn mdui-btn-raised mdui-ripple\">解IP</a>";
-}              
+}  
+
      echo"</td></tr>";
     }
     echo "</table></div>";
