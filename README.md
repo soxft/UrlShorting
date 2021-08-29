@@ -64,7 +64,7 @@ xcsoft版权所有 该源码依据apache2开源协议开源,请不要修改版�
   <p>Contact us: Gary@dtnetwork.top</p>
 
 ## 更新
-v2.2.1更新
+v2.2.2更新
 <br/>此次更新由k6o短链接提供
   <p>email: Gary@dtnetwork.top</p>
   <p>1.管理页面添加访问按钮，方便预览</p>
