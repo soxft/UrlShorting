@@ -10,13 +10,13 @@
 
 [![](https://data.jsdelivr.com/v1/package/gh/soxft/Urlshorting/badge)](https://www.jsdelivr.com/package/gh/soxft/Urlshorting)
 <a href="http://www.apache.org/licenses/LICENSE-2.0.html"> 
-<img src="https://img.shields.io/github/license/soxft/URLshorting.svg" alt="License"></a>
+<img src="https://img.shields.io/github/license/soxft/URLshorting.svg?style=for-the-badge" alt="License"></a>
 <a href="https://github.com/soxft/URLshorting/stargazers"> 
-<img src="https://img.shields.io/github/stars/soxft/URLshorting.svg" alt="GitHub stars"></a>
+<img src="https://img.shields.io/github/stars/soxft/URLshorting.svg?style=for-the-badge" alt="GitHub stars"></a>
 <a href="https://github.com/soxft/URLshorting/network/members"> 
-<img src="https://img.shields.io/github/forks/soxft/URLshorting.svg" alt="GitHub forks"></a> 
+<img src="https://img.shields.io/github/forks/soxft/URLshorting.svg?style=for-the-badge" alt="GitHub forks"></a> 
 <a href = "https://github.com/soxft/UrlShorting/releases">
-<img alt="GitHub commits since latest release (by SemVer)" src="https://img.shields.io/github/commits-since/soxft/urlshorting/latest?style=for-the-badge"></a>
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/soxft/urlshorting?style=for-the-badge"></a>
 </center>
 
 ## English version(BETA)

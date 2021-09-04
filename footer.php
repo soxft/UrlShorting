@@ -57,7 +57,6 @@
 <img src="https://img.shields.io/github/forks/soxft/URLshorting.svg?style=for-the-badge" alt="GitHub forks"></a> 
 <a href = "https://github.com/soxft/UrlShorting/releases">
 <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/soxft/urlshorting?style=for-the-badge"></a>
-</center>
     </center>
 <!-- 
     需要的话自己删除注释
