@@ -19,7 +19,7 @@
     </script>
     <?php //从url中提取host
     $arr = parse_url($url);
-    echo $host = $arr['host'];
+    $host = $arr['host'];
     ?>
 
     <center>
@@ -49,6 +49,15 @@
                  }
                  setInterval("ShowRunTime('RunTime')", 1000);
                </script>      
+    <a href="http://www.apache.org/licenses/LICENSE-2.0.html"> 
+<img src="https://img.shields.io/github/license/soxft/URLshorting.svg?style=for-the-badge" alt="License"></a>
+<a href="https://github.com/soxft/URLshorting/stargazers"> 
+<img src="https://img.shields.io/github/stars/soxft/URLshorting.svg?style=for-the-badge" alt="GitHub stars"></a>
+<a href="https://github.com/soxft/URLshorting/network/members"> 
+<img src="https://img.shields.io/github/forks/soxft/URLshorting.svg?style=for-the-badge" alt="GitHub forks"></a> 
+<a href = "https://github.com/soxft/UrlShorting/releases">
+<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/soxft/urlshorting?style=for-the-badge"></a>
+</center>
     </center>
 <!-- 
     需要的话自己删除注释

@@ -6,6 +6,8 @@
   <br>
 </h1>
 
+<center>
+
 [![](https://data.jsdelivr.com/v1/package/gh/soxft/Urlshorting/badge)](https://www.jsdelivr.com/package/gh/soxft/Urlshorting)
 <a href="http://www.apache.org/licenses/LICENSE-2.0.html"> 
 <img src="https://img.shields.io/github/license/soxft/URLshorting.svg" alt="License"></a>
@@ -13,6 +15,9 @@
 <img src="https://img.shields.io/github/stars/soxft/URLshorting.svg" alt="GitHub stars"></a>
 <a href="https://github.com/soxft/URLshorting/network/members"> 
 <img src="https://img.shields.io/github/forks/soxft/URLshorting.svg" alt="GitHub forks"></a> 
+<a href = "https://github.com/soxft/UrlShorting/releases">
+<img alt="GitHub commits since latest release (by SemVer)" src="https://img.shields.io/github/commits-since/soxft/urlshorting/latest?style=for-the-badge"></a>
+</center>
 
 ## English version(BETA)
 https://github.com/essesoul/UrlShorting-en
@@ -64,13 +69,16 @@ xcsoft版权所有 该源码依据apache2开源协议开源,请不要修改版�
   <p>Contact us: Gary@dtnetwork.top</p>
 
 ## 更新
-v2.2.2更新
+v2.2.3更新
 <br/>此次更新由k6o短链接提供
   <p>email: Gary@dtnetwork.top</p>
-  <p>1.管理页面添加访问按钮，方便预览</p>
-
-
+  <P>1.更新了版本号获取方式，直接拉取GitHub的releases</p>
+  <p>2.修改了footer.php中的显示bug</p>
+  <p>3.版本号不再写入数据库和config.php，直接写在php变量中</p>
+  <p>4.更新footer和友链</p>
+  <p>5.优化了一下代码的缩进</p>
+  <p>PS:下次更新计划加上登陆页面验证码和统计代码</p>
 
 ## 其他提示
   由于某些原因，该源码仍然使用Mysqli连接数据库，可能缺乏一定的安全性，使用时请注意使用WAF等平台进行保护。
-  该项目目前由k6o.top进行维护
+  该项目目前由essesoul进行维护

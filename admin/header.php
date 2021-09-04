@@ -44,7 +44,7 @@ $password = $_SESSION['password'];
         <a href="./control.php" class="mdui-ripple">短域管理</a>
         <a href="./preferences.php" class="mdui-ripple">偏好设置</a>
         <a href="./oauth.php" class="mdui-ripple">第三方登录</a>
-    <!-- <a href="./update.php" class="mdui-ripple">检查更新</a> -->
+        <a href="./update.php" class="mdui-ripple">查看更新</a>
         <a href="./logout.php" class="mdui-ripple">退出登录</a>
         <a href="../index.php" class="mdui-ripple">返回前台</a>
     </div>
