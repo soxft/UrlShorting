@@ -4,10 +4,7 @@
   <br>
   URLshorting
   <br>
-</h1>
-
-<center>
-<a href="http://www.apache.org/licenses/LICENSE-2.0.html"> 
+  <a href="http://www.apache.org/licenses/LICENSE-2.0.html"> 
 <img src="https://img.shields.io/github/license/soxft/URLshorting.svg?style=for-the-badge" alt="License"></a>
 <a href="https://github.com/soxft/URLshorting/stargazers"> 
 <img src="https://img.shields.io/github/stars/soxft/URLshorting.svg?style=for-the-badge" alt="GitHub stars"></a>
@@ -15,7 +12,7 @@
 <img src="https://img.shields.io/github/forks/soxft/URLshorting.svg?style=for-the-badge" alt="GitHub forks"></a> 
 <a href = "https://github.com/soxft/UrlShorting/releases">
 <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/soxft/urlshorting?style=for-the-badge"></a>
-</center>
+</h1>
 
 ## English version(BETA)
 https://github.com/essesoul/UrlShorting-en
