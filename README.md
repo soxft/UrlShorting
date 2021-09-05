@@ -14,8 +14,12 @@
 <a href="https://github.com/soxft/URLshorting/network/members"> 
 <img src="https://img.shields.io/github/forks/soxft/URLshorting.svg" alt="GitHub forks"></a> 
 
-## English version(BETA)
-https://github.com/essesoul/UrlShorting-en
+## 国内镜像地址
+[Gitee](https://gitee.com/dtnetwork/UrlShorting)
+
+## Github发布地址
+[soxft](https://github.com/soxft/UrlShorting)
+[essesoul](https://github.com/essesoul/UrlShorting)
 
 ## 简介
 
