@@ -159,7 +159,10 @@ if (empty($id)) {
           <a href="//blog.xsot.cn" class="mdui-list-item mdui-ripple ">星辰日记</a>
           </div>
           <div class="mdui-collapse-item-body mdui-list">
-          <a href="https://blog.dtnetwork.top/" class="mdui-list-item mdui-ripple ">💻鼎天网络博客</a>
+          <a href="https://blog.dtnetwork.top/" class="mdui-list-item mdui-ripple ">鼎天网络博客</a>
+          </div>
+          <div class="mdui-collapse-item-body mdui-list">
+          <a href="https://github.com/soxft/UrlShorting" class="mdui-list-item mdui-ripple ">GitHub开源地址</a>
           </div>
         </div>
       </div>

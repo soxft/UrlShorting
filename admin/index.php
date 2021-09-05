@@ -1,10 +1,24 @@
-<?php require_once "header.php"; ?>
+<?php require_once "header.php"; 
+ $version = "V2.2.3";
+?>
 <title>首页</title>
 <div style="Height:20px"></div>
 <div class="mdui-container">
   <h2 style="font-weight:400">官方信息</h2>
   <ul class="mdui-list">
-    <li id="officalInfo" style="font-weight:400" class="mdui-list-item mdui-ripple">Loading...</li>
+      <div class="mdui-list-item-content">
+        当前版本：<?php echo $version?>
+      </div>
+  </li>
+        <a href="http://www.apache.org/licenses/LICENSE-2.0.html"> 
+        <img src="https://img.shields.io/github/license/soxft/URLshorting.svg?style=for-the-badge" alt="License"></a>
+        <a href="https://github.com/soxft/URLshorting/stargazers"> 
+        <img src="https://img.shields.io/github/stars/soxft/URLshorting.svg?style=for-the-badge" alt="GitHub stars"></a>
+        <a href="https://github.com/soxft/URLshorting/network/members"> 
+        <img src="https://img.shields.io/github/forks/soxft/URLshorting.svg?style=for-the-badge" alt="GitHub forks"></a> 
+        <a href = "https://github.com/soxft/UrlShorting/releases">
+        <img alt="GitHub commits since latest release (by SemVer)" src="https://img.shields.io/github/commits-since/soxft/urlshorting/latest?style=for-the-badge"></a>
+    </li>
   </ul>
 </div>
 </div>
@@ -26,7 +40,7 @@
     <li class="mdui-list-item mdui-ripple">
       <i class="mdui-list-item-icon mdui-icon material-icons">panorama_vertical</i>
       <div class="mdui-list-item-content">
-        PHP: <?PHP echo PHP_VERSION; ?>
+        PHP版本: <?PHP echo PHP_VERSION; ?>
       </div>
     </li>
     <li class="mdui-list-item mdui-ripple">
@@ -54,52 +68,4 @@ function getNum($conns,$tablename){
     echo mysqli_fetch_assoc(mysqli_query($conns,"select * from `TABLES` where `TABLE_NAME`='$tablename'"))['TABLE_ROWS'];
 }
 ?>
-<script>
-var $ = mdui.JQ;
-$.ajax({
-  method: 'get',
-  url: 'https://xsot.cn/api/update/notice.php',
-  timeout: 10000,
-  data: {
-    app: 'urlshorting'
-  },
-  success: function(data)
-  {
-    data = eval('(' + data + ')');
-    //console.log(data)
-    len = Object.keys(data).length;
-    len = len > 5 ? 5 : len;
-    //console.log(len)
-    //console.log(data['0']['content'])
-    html = '';
-    for(i = 0;i <= len-1;i++)
-    {
-      content = data[i]['content'];
-      url = data[i]['url'];
-      date = data[i]['date'];
-      if(date == '')
-      {
-        info = content
-      }else{
-        info = date + ' | ' + content;
-      }
-      html += '\
-      <li class="mdui-list-item mdui-ripple">\
-        <div class="mdui-list-item-content" onclick="window.open(\'' + url + '\')">\
-          ' + info + '\
-        </div>\
-      </li>';
-    }
-    //console.log(html)
-    $('#officalInfo').replaceWith(html);
-  },
-  complete: function (xhr, textStatus) 
-    {
-      if(textStatus == 'timeout')
-      {
-        $('#officalInfo').replaceWith('<li class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">请求超时...</div></li>');
-      }
-    }
-});
-</script>
 <?php require_once "../footer.php";  ?>

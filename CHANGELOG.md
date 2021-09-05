@@ -1,3 +1,14 @@
+v2.2.3更新
+<br/>此次更新由k6o短链接提供
+  <p>email: Gary@dtnetwork.top</p>
+  <P>1.更新了版本号获取方式，直接拉取GitHub的releases</p>
+  <p>2.修改了footer.php中的显示bug</p>
+  <p>3.版本号不再写入数据库和config.php，直接写在php变量中</p>
+  <p>4.更新footer和友链</p>
+  <p>5.优化了一下代码的缩进</p>
+  <p>PS:下次更新计划加上登陆页面验证码和统计代码</p>
+
+
 v2.2.2更新
 <br/>此次更新由k6o短链接提供
   <p>email: Gary@dtnetwork.top</p>

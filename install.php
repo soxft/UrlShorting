@@ -38,7 +38,7 @@
       <br />
       <div class="mdui-textfield mdui-textfield-floating-label">
         <label class="mdui-textfield-label">网站域名</label>
-        <input name="url" type="text" class="mdui-textfield-input" value="http://<?php echo$_SERVER['HTTP_HOST'] ?>/" />
+        <input name="url" type="text" class="mdui-textfield-input" value="https://<?php echo$_SERVER['HTTP_HOST'] ?>/" />
       </div>
       <div class="mdui-textfield mdui-textfield-floating-label">
         <label class="mdui-textfield-label">网站标题(网页中所显示的)</label>
@@ -76,7 +76,6 @@
         $pass = $_POST['pass'];
         $passwd = $_POST['passwd'];
       }
-      $title = $title . " - Powered by XCSOFT";
       $conn = mysqli_connect($db_host,$db_username,$db_password,$db_name);
       if ($conn) {
       $banx = "CREATE TABLE ban (
@@ -115,7 +114,6 @@
       configAdd($conn,'urlcheck','true');
       configAdd($conn,'xoauth','');
       configAdd($conn,'px','25');
-      configAdd($conn,'version','2.1.5');
       } else {
         exit("<br/><center><h1>数据库连接失败!请确认数据库信息填写正确!</h1></center>");
       }
@@ -139,8 +137,7 @@
       $config_strings .= "\$strPolchoice = content(\"strPolchoice\");   \n//短网址包含的内容,即短网址后会出现的字符\n";
       $config_strings .= "\$passwd = content(\"passwd\");   \n//设置后台管理密码\n";
       $config_strings .= "\$px = content(\"px\");      \n//后台短域管理页面一次显示的短域个数\n";
-      $config_strings .= "\$version = content(\"version\");      \n//当前版本号--请不要修改\n";
-      $config_strings.= "?>";
+      $config_strings .= "?>";
       //文件内容
       $fp = fopen($config_file,"wb");
       fwrite($fp,$config_strings);
