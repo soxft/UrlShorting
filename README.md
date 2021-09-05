@@ -14,8 +14,12 @@
 <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/soxft/urlshorting?style=for-the-badge"></a>
 </h1>
 
-## English version(BETA)
-https://github.com/essesoul/UrlShorting-en
+## 国内镜像地址
+[Gitee](https://gitee.com/dtnetwork/UrlShorting)
+
+## Github发布地址
+[soxft](https://github.com/soxft/UrlShorting)
+[essesoul](https://github.com/essesoul/UrlShorting)
 
 ## 简介
 
