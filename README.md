@@ -14,6 +14,11 @@
 <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/soxft/urlshorting?style=for-the-badge"></a>
 </h1>
 
+# 需要注意
+该项目暂时不再维护,我们将完全重构该项目,为了保证历史commit 以及 保证新项目的commit清晰, 我们准备在 https://github.com/soxft/UrlShorter 完成新的项目
+<br> 如果您有任何新的建议, 可以在 /soxft/UrlShorter 提出issue 感谢支持
+
+
 ## 国内镜像地址
 [Gitee](https://gitee.com/dtnetwork/UrlShorting)
 
