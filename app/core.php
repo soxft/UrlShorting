@@ -41,7 +41,7 @@ function Urlshorting($content, $type, $passwd, $shorturlInput) {
 
     //判断为短域
     if($type == 'shorturl'){
-        if (!preg_match('#(http|https)://(.*\.)?.*\..*#i', $content) || mb_strlen($content) > 1000 || mb_strlen($content) < 10) {
+        if (!preg_match('#^(http|https)://(.+\.)+[a-z]{2,}(/.*)*$#i', $content) || mb_strlen($content) > 1000 || mb_strlen($content) < 10) {
             return array(1001);
             exit();
         }
