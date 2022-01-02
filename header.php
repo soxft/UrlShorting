@@ -27,7 +27,7 @@ if (empty($id)) {
   $arr1 = mysqli_fetch_assoc(mysqli_query($conn,"SELECT *FROM `ban` where `content`='$ip' or `content`='$id'"));
   $type = $arr1['type'];
   if (!empty($type)) {
-    echo("<br /><br /><center><img src=\"https://cdn.jsdelivr.net/gh/soxft/cdn@master/urlshorting/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
+    echo("<br /><br /><center><img src=\"https://cdn.jsdelivr.net/gh/soxft/cdn@1.0.0/urlshorting/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
     echo('<center><h1>该短域已被管理员封禁</h1></center></div>');
     exit();
   }
