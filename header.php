@@ -27,7 +27,7 @@ if (empty($id)) {
   $arr1 = mysqli_fetch_assoc(mysqli_query($conn,"SELECT *FROM `ban` where `content`='$ip' or `content`='$id'"));
   $type = $arr1['type'];
   if (!empty($type)) {
-    echo("<br /><br /><center><img src=\"https://cdn.jsdelivr.net/gh/soxft/cdn@1.0.0/urlshorting/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
+    echo("<br /><br /><center><img src=\"/assets/img/notice.png\" widht=\"85\"  height=\"85\" alt=\"错误\"></center>");
     echo('<center><h1>该短域已被管理员封禁</h1></center></div>');
     exit();
   }
@@ -108,7 +108,7 @@ if (empty($id)) {
   <title>
     <?php echo $title?>
   </title>
-  <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/soxft/cdn@1.9/urlshorting/favicon.ico" media="screen" />
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" media="screen" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
   <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
   <script src="//instant.page/1.2.2" type="module" integrity="sha384-2xV8M5griQmzyiY3CDqh1dn4z3llDVqZDqzjzcY+jCBCk/a5fXJmuZ/40JJAPeoU"></script>
@@ -122,7 +122,7 @@ if (empty($id)) {
       text-decoration:none
     }
   </style>
-  <body background="https://cdn.jsdelivr.net/gh/soxft/cdn@1.9/urlshorting/background.png" class="mdui-drawer-body-left mdui-appbar-with-toolbar">
+  <body background="/assets/img/background.png" class="mdui-drawer-body-left mdui-appbar-with-toolbar">
     <div class="mdui-toolbar mdui-color-theme">
       <span class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: '#main-drawer'}">
         <i class="mdui-icon material-icons">menu</i>

@@ -16,7 +16,7 @@ session_start();
 $password = $_SESSION['password'];
 ?>
 <head>
-  <link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/soxft/cdn@1.0.0/urlshorting/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="../assets/img/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
@@ -30,7 +30,7 @@ $password = $_SESSION['password'];
     }
   </style>
 </head>
-  <body background="https://cdn.jsdelivr.net/gh/soxft/cdn@1.0.0/urlshorting/background.png">
+  <body background="../assets/img/background.png">
    <?php
    if ($_SESSION['password'] !== $passwd) {
     //判断是否登录
