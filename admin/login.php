@@ -21,13 +21,13 @@ if(isset($_POST['passwd']))
   }
 }
 ?>
-<link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/soxft/cdn@1.9/urlshorting/favicon.ico" />
-<body background="https://cdn.jsdelivr.net/gh/soxft/cdn@1.9/urlshorting/background.png">
+<link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+<body background="/assets/img/background.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title><?php echo $title; ?></title>
     <meta charset="utf-8">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/mdui@0.4.3/dist/js/mdui.min.js"></script>
+  <link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/mdui/0.4.3/css/mdui.min.css">
+  <script src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/mdui/0.4.3/js/mdui.min.js"></script>
       <style>
         a {
           text-decoration:none
