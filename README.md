@@ -1,18 +1,14 @@
 <h1 align="center">
-  <br>
-  <a href="https://k6o.top/" alt="logo" ><img src="https://github.com/essesoul/img/blob/main/URLshorting/urlshorting.png?raw=true" width="150"/></a>
-  <br>
-  URLshorting
-  <br>
   <a href="http://www.apache.org/licenses/LICENSE-2.0.html"> 
-<img src="https://img.shields.io/github/license/soxft/URLshorting.svg?style=for-the-badge" alt="License"></a>
-<a href="https://github.com/soxft/URLshorting/stargazers"> 
-<img src="https://img.shields.io/github/stars/soxft/URLshorting.svg?style=for-the-badge" alt="GitHub stars"></a>
-<a href="https://github.com/soxft/URLshorting/network/members"> 
-<img src="https://img.shields.io/github/forks/soxft/URLshorting.svg?style=for-the-badge" alt="GitHub forks"></a> 
-<a href = "https://github.com/soxft/UrlShorting/releases">
-<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/soxft/urlshorting?style=for-the-badge"></a>
+  <img src="https://img.shields.io/github/license/soxft/URLshorting.svg?style=for-the-badge" alt="License"></a>
+  <a href="https://github.com/soxft/URLshorting/stargazers"> 
+  <img src="https://img.shields.io/github/stars/soxft/URLshorting.svg?style=for-the-badge" alt="GitHub stars"></a>
+  <a href="https://github.com/soxft/URLshorting/network/members"> 
+  <img src="https://img.shields.io/github/forks/soxft/URLshorting.svg?style=for-the-badge" alt="GitHub forks"></a> 
+  <a href = "https://github.com/soxft/UrlShorting/releases">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/soxft/urlshorting?style=for-the-badge"></a>
 </h1>
+
 
 # 需要注意
 该项目暂时不再维护,我们将完全重构该项目,为了保证历史commit 以及 保证新项目的commit清晰, 我们准备在 https://github.com/soxft/UrlShorter 完成新的项目
