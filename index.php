@@ -69,7 +69,7 @@ if ($status == "passmessage") {
     </div>
 </div>
 <script>
-var $ = mdui.JQ;
+var $ = mdui.$;
 
 function change(type)
 {
